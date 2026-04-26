@@ -20,13 +20,19 @@ const Habits = () => {
         const newHistory = [...h.history];
         newHistory[dayIndex] = newHistory[dayIndex] ? 0 : 1;
         
-        // Recalculate streak (simplified)
         let newStreak = 0;
         for (let i = newHistory.length - 1; i >= 0; i--) {
           if (newHistory[i]) newStreak++;
           else break;
         }
         
+        if (newHistory.every(s => s === 1)) {
+          toast.success(`Amazing! You completed "${h.name}" for the whole week! 🏆`, {
+            duration: 4000,
+            icon: '🎉',
+          });
+        }
+
         return { ...h, history: newHistory, streak: newStreak };
       }
       return h;
@@ -34,7 +40,20 @@ const Habits = () => {
   };
 
   const handleAddHabit = () => {
-    toast.success('New habit template created!');
+    const name = prompt('Enter habit name:');
+    if (!name) return;
+    
+    const newHabit = {
+      id: Date.now(),
+      name: name,
+      streak: 0,
+      history: [0, 0, 0, 0, 0, 0, 0],
+      color: ['#34d399', '#60a5fa', '#fbbf24', '#f87171', '#a78bfa'][Math.floor(Math.random() * 5)],
+      goal: 'Daily'
+    };
+    
+    setHabits([...habits, newHabit]);
+    toast.success('Habit added successfully!');
   };
 
   return (
