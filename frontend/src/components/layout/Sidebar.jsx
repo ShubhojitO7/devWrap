@@ -33,7 +33,7 @@ const menuSections = [
     title: 'PERSONAL',
     items: [
       { label: 'Peer Study', icon: Users, path: '/ai', badge: null },
-      { label: 'Habit Tracker', icon: Heart, path: '/routine', badge: null },
+      { label: 'Habit Tracker', icon: Heart, path: '/habits', badge: null },
       { label: 'Budget', icon: BarChart3, path: '/budget', badge: null },
       { label: 'Pomodoro', icon: Timer, path: '/routine', badge: null },
       { label: 'Wellbeing', icon: Heart, path: '/routine', badge: null },
@@ -169,7 +169,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                 />
               </div>
               <p className="text-[10px] font-sans" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                7 / 10 — Upgrade for unlimited
+                7 / 10 — <NavLink to="/premium" className="text-crimson-rose hover:underline">Upgrade for unlimited</NavLink>
               </p>
             </motion.div>
           )}

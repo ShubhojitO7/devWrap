@@ -1,11 +1,30 @@
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
 import StatCard from '../components/shared/StatCard';
 import AnimatedPage from '../components/shared/AnimatedPage';
 import { Bot, FileText, Receipt, Timer, ArrowUpRight, Star, Download, CheckCircle, Circle, Clock, Send, BookOpen, ShoppingBag, AlertTriangle, Search, Calendar, Heart, Smile, Meh, Frown, Crown } from 'lucide-react';
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const [aiQuery, setAiQuery] = useState('');
+
+  const handleAISubmit = (e) => {
+    e?.preventDefault();
+    if (aiQuery.trim()) {
+      navigate('/ai', { state: { initialQuery: aiQuery } });
+    }
+  };
+
+  const quickActions = [
+    {icon: <Bot size={20}/>, label:'Ask AI', color:'#a78bfa', path: '/ai'},
+    {icon: <FileText size={20}/>, label:'Upload Note', color:'#60a5fa', path: '/notes'},
+    {icon: <Receipt size={20}/>, label:'Log Expense', color:'#34d399', path: '/budget'},
+    {icon: <Timer size={20}/>, label:'Pomodoro', color:'#D1495B', path: '/routine'},
+    {icon: <Calendar size={20}/>, label:'Schedule', color:'#fbbf24', path: '/routine'},
+  ];
 
   return (
     <AnimatedPage>
@@ -25,19 +44,18 @@ const Dashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-          {[
-            {icon: <Bot size={20}/>, label:'Ask AI', color:'#a78bfa'},
-            {icon: <FileText size={20}/>, label:'Upload Note', color:'#60a5fa'},
-            {icon: <Receipt size={20}/>, label:'Log Expense', color:'#34d399'},
-            {icon: <Timer size={20}/>, label:'Pomodoro', color:'#D1495B'},
-            {icon: <Calendar size={20}/>, label:'Schedule', color:'#fbbf24'},
-          ].map((a,i) => (
-            <motion.div key={i} className="quick-action" whileHover={{y:-3}} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:i*0.08}}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:`${a.color}15`,color:a.color}}>{a.icon}</div>
-              <span className="text-xs font-sans text-white/60">{a.label}</span>
-            </motion.div>
-          ))}
+        <div className="space-y-3">
+          <h2 className="text-xs font-heading font-bold text-white/40 uppercase tracking-widest px-1">Quick Actions</h2>
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
+            {quickActions.map((a,i) => (
+              <Link to={a.path} key={i}>
+                <motion.div className="quick-action" whileHover={{y:-3}} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:i*0.08}}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:`${a.color}15`,color:a.color}}>{a.icon}</div>
+                  <span className="text-xs font-sans text-white/60">{a.label}</span>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* AI Chat Preview + Today's Schedule */}
@@ -60,14 +78,20 @@ const Dashboard = () => {
             </div>
             <div className="flex gap-2 flex-wrap mb-3">
               {['Summarize PDF','Generate Quiz','Flashcards','Essay help'].map(t=>(
-                <button key={t} className="px-3 py-1.5 rounded-lg text-[11px] font-sans border transition-all hover:border-crimson-rose-400/30" style={{borderColor:'rgba(255,255,255,0.1)',color:'rgba(255,255,255,0.5)'}}>{t}</button>
+                <button key={t} onClick={() => navigate('/ai', { state: { initialQuery: t } })} className="px-3 py-1.5 rounded-lg text-[11px] font-sans border transition-all hover:border-crimson-rose-400/30" style={{borderColor:'rgba(255,255,255,0.1)',color:'rgba(255,255,255,0.5)'}}>{t}</button>
               ))}
             </div>
-            <div className="flex gap-2">
-              <input className="input-glass flex-1 text-xs" placeholder="Ask anything or upload PDF..."/>
-              <button className="btn-primary px-3 py-2"><Send size={14}/></button>
-            </div>
+            <form onSubmit={handleAISubmit} className="flex gap-2">
+              <input 
+                className="input-glass flex-1 text-xs" 
+                placeholder="Ask anything or upload PDF..."
+                value={aiQuery}
+                onChange={(e) => setAiQuery(e.target.value)}
+              />
+              <button type="submit" className="btn-primary px-3 py-2"><Send size={14}/></button>
+            </form>
           </div>
+
           <div className="glass-card p-5">
             <h3 className="text-sm font-heading font-bold text-white mb-3">Today's Timeline</h3>
             {[{t:'9am',s:'OS',c:'#fb923c'},{t:'11am',s:'DBMS',c:'#60a5fa'},{t:'2pm',s:'ML Lab',c:'#a78bfa'},{t:'4pm',s:'Study',c:'#34d399'}].map((s,i)=>(
@@ -183,7 +207,7 @@ const Dashboard = () => {
           <div className="glass-card p-5">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-heading font-bold text-white">Habit tracker</h3>
-              <span className="badge badge-resolved text-[10px]">6d streak</span>
+              <Link to="/habits" className="badge badge-resolved text-[10px] cursor-pointer hover:bg-emerald-400/20 transition-colors">6d streak</Link>
             </div>
             {[{h:'Morning revision',s:[1,1,1,1,1,1,0],st:6},{h:'Exercise 30 min',s:[1,0,1,0,1,0,0],st:3},{h:'Read 20 pages',s:[1,1,1,1,0,1,0],st:5},{h:'No social media before 10am',s:[1,1,1,1,1,1,1],st:7}].map((h,i)=>(
               <div key={i} className="mb-3">
@@ -200,12 +224,21 @@ const Dashboard = () => {
           <div className="glass-card p-5">
             <h3 className="text-sm font-heading font-bold text-white mb-3">Wellbeing check</h3>
             <p className="text-[11px] font-sans text-white/40 mb-2">How are you feeling today?</p>
-            <div className="flex gap-2 mb-3">
-              {['😞','😐','😊','😄','🤩'].map((e,i)=>(
-                <button key={i} className="w-9 h-9 rounded-xl text-lg flex items-center justify-center transition-all hover:scale-110" style={{background:i===3?'rgba(52,211,153,0.2)':'rgba(255,255,255,0.04)',border:i===3?'1px solid rgba(52,211,153,0.3)':'1px solid transparent'}}>{e}</button>
+            <div className="flex gap-2 mb-1 justify-between">
+              {[
+                {e:'😞', n:'Down'},
+                {e:'😐', n:'Neutral'},
+                {e:'😊', n:'Good'},
+                {e:'😄', n:'Great'},
+                {e:'🤩', n:'Awesome'}
+              ].map((m,i)=>(
+                <div key={i} className="flex flex-col items-center gap-1">
+                  <button className="w-9 h-9 rounded-xl text-lg flex items-center justify-center transition-all hover:scale-110" style={{background:i===3?'rgba(52,211,153,0.2)':'rgba(255,255,255,0.04)',border:i===3?'1px solid rgba(52,211,153,0.3)':'1px solid transparent'}}>{m.e}</button>
+                  <span className="text-[8px] font-sans text-white/30 uppercase tracking-tighter">{m.n}</span>
+                </div>
               ))}
             </div>
-            <p className="text-[10px] font-sans text-white/30 mb-2">This week's mood</p>
+            <p className="text-[10px] font-sans text-white/30 mb-2 mt-4">This week's mood</p>
             <div className="flex gap-1 mb-3">
               {['M','T','W','T','F'].map((d,i)=>(
                 <div key={i} className="w-6 h-6 rounded text-[9px] font-sans flex items-center justify-center" style={{background:['rgba(52,211,153,0.15)','rgba(52,211,153,0.15)','rgba(251,191,36,0.15)','rgba(52,211,153,0.15)','rgba(96,165,250,0.15)'][i],color:['#34d399','#34d399','#fbbf24','#34d399','#60a5fa'][i]}}>{d}</div>
@@ -214,6 +247,7 @@ const Dashboard = () => {
             <div className="glass-card p-3 text-[10px] font-sans text-white/50">Tip: You've had a good week! Remember to take a 10-min break every hour. Staying hydrated boosts focus by 15%.</div>
           </div>
         </div>
+
 
         {/* Marketplace + Events + Lost & Found */}
         <div className="grid md:grid-cols-3 gap-4">

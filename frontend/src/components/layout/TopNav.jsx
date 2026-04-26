@@ -78,19 +78,21 @@ const TopNav = () => {
         </button>
 
         {/* Premium button */}
-        <motion.button
-          className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-sans font-semibold"
-          style={{
-            background: 'linear-gradient(135deg, rgba(167,139,250,0.15), rgba(209,73,91,0.15))',
-            border: '1px solid rgba(167,139,250,0.3)',
-            color: '#a78bfa',
-          }}
-          whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(167,139,250,0.2)' }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Crown size={14} />
-          Premium
-        </motion.button>
+        <NavLink to="/premium">
+          <motion.button
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-sans font-semibold"
+            style={{
+              background: 'linear-gradient(135deg, rgba(167,139,250,0.15), rgba(209,73,91,0.15))',
+              border: '1px solid rgba(167,139,250,0.3)',
+              color: '#a78bfa',
+            }}
+            whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(167,139,250,0.2)' }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Crown size={14} />
+            Premium
+          </motion.button>
+        </NavLink>
 
         {/* Avatar */}
         <div
