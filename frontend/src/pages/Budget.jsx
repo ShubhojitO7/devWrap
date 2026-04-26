@@ -11,13 +11,13 @@ const Budget = () => (
   <AnimatedPage>
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-heading font-bold text-white">Budget Manager</h1>
+        <h1 className="text-xl font-heading font-bold text-[var(--fg-color)]">Budget Manager</h1>
         <button className="btn-primary flex items-center gap-2 text-sm"><Plus size={14}/>Add Expense</button>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
-        <div className="glass-card p-5"><p className="text-[11px] font-sans text-white/40">Total Spent</p><p className="text-2xl font-heading font-bold text-white mt-1">₹4,280</p><p className="text-[10px] font-sans text-amber-400 mt-1 flex items-center gap-1"><TrendingUp size={10}/>12% more than last month</p></div>
-        <div className="glass-card p-5"><p className="text-[11px] font-sans text-white/40">Remaining</p><p className="text-2xl font-heading font-bold text-emerald-400 mt-1">₹1,720</p><p className="text-[10px] font-sans text-white/30 mt-1">of ₹6,000 budget</p></div>
-        <div className="glass-card p-5"><p className="text-[11px] font-sans text-white/40">Biggest Category</p><p className="text-2xl font-heading font-bold text-orange-400 mt-1">Food</p><p className="text-[10px] font-sans text-white/30 mt-1">₹1,840 (43%)</p></div>
+        <div className="glass-card p-5"><p className="text-[11px] font-sans text-[var(--text-muted)]">Total Spent</p><p className="text-2xl font-heading font-bold text-[var(--fg-color)] mt-1">₹4,280</p><p className="text-[10px] font-sans text-amber-400 mt-1 flex items-center gap-1"><TrendingUp size={10}/>12% more than last month</p></div>
+        <div className="glass-card p-5"><p className="text-[11px] font-sans text-[var(--text-muted)]">Remaining</p><p className="text-2xl font-heading font-bold text-emerald-400 mt-1">₹1,720</p><p className="text-[10px] font-sans text-[var(--text-muted)] opacity-80 mt-1">of ₹6,000 budget</p></div>
+        <div className="glass-card p-5"><p className="text-[11px] font-sans text-[var(--text-muted)]">Biggest Category</p><p className="text-2xl font-heading font-bold text-orange-400 mt-1">Food</p><p className="text-[10px] font-sans text-[var(--text-muted)] opacity-80 mt-1">₹1,840 (43%)</p></div>
       </div>
       <div className="glass-card p-5">
         <h3 className="text-sm font-heading font-bold text-white mb-4">Category Breakdown</h3>
@@ -35,10 +35,10 @@ const Budget = () => (
         <h3 className="text-sm font-heading font-bold text-white mb-4">Recent Transactions</h3>
         {expenses.map((g,gi)=>(
           <div key={gi} className="mb-4">
-            <p className="text-[11px] font-sans text-white/30 mb-2">{g.d}</p>
+            <p className="text-[11px] font-sans text-[var(--text-muted)] opacity-80 mb-2">{g.d}</p>
             {g.items.map((e,i)=>(
-              <div key={i} className="flex items-center justify-between py-2.5 border-b border-white/5">
-                <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:`${e.col}15`}}><div className="w-2 h-2 rounded-full" style={{background:e.col}}/></div><div><p className="text-xs font-sans text-white/80">{e.t}</p><p className="text-[10px] font-sans text-white/30">{e.c}</p></div></div>
+              <div key={i} className="flex items-center justify-between py-2.5 border-b border-[var(--card-border)]">
+                <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:`${e.col}15`}}><div className="w-2 h-2 rounded-full" style={{background:e.col}}/></div><div><p className="text-xs font-sans text-[var(--fg-color)] opacity-80">{e.t}</p><p className="text-[10px] font-sans text-[var(--text-muted)] opacity-80">{e.c}</p></div></div>
                 <span className="text-sm font-sans font-semibold text-white">-₹{e.a}</span>
               </div>
             ))}
@@ -50,3 +50,5 @@ const Budget = () => (
 );
 
 export default Budget;
+
+

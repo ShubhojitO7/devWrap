@@ -12,21 +12,21 @@ const Premium = () => (
   <AnimatedPage>
     <div className="space-y-8 max-w-5xl mx-auto">
       <div className="text-center">
-        <h1 className="text-2xl font-heading font-bold text-white flex items-center justify-center gap-2"><Crown className="text-amber-400" size={24}/>StudyNest Premium</h1>
-        <p className="text-sm font-sans text-white/40 mt-2">Unlock the full power of AI-driven learning</p>
+        <h1 className="text-2xl font-heading font-bold text-[var(--fg-color)] flex items-center justify-center gap-2"><Crown className="text-amber-400" size={24}/>StudyNest Premium</h1>
+        <p className="text-sm font-sans text-[var(--text-muted)] mt-2">Unlock the full power of AI-driven learning</p>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {plans.map((p,i)=>(
           <motion.div key={i} className="glass-card p-6 relative" style={{background:p.style.bg,border:`1px solid ${p.style.border}`}} initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{delay:i*0.1}} whileHover={{y:-5}}>
             {p.pop && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-sans font-bold" style={{background:'linear-gradient(135deg,#a78bfa,#D1495B)',color:'white'}}>Most Popular</div>}
-            <h3 className="text-lg font-heading font-bold text-white">{p.n}</h3>
-            <div className="mt-2 mb-1"><span className="text-3xl font-heading font-bold text-white">{p.p}</span><span className="text-sm font-sans text-white/40"> / {p.per}</span></div>
+            <h3 className="text-lg font-heading font-bold text-[var(--fg-color)]">{p.n}</h3>
+            <div className="mt-2 mb-1"><span className="text-3xl font-heading font-bold text-white">{p.p}</span><span className="text-sm font-sans text-[var(--text-muted)]"> / {p.per}</span></div>
             {p.sub && <p className="text-[11px] font-sans text-emerald-400 mb-3">{p.sub}</p>}
             <div className="space-y-2.5 my-5">
               {p.features.map((f,j)=>(
                 <div key={j} className="flex items-center gap-2">
                   {f.v ? <Check size={14} className="text-emerald-400"/> : <X size={14} className="text-white/20"/>}
-                  <span className={`text-xs font-sans ${f.v?'text-white/70':'text-white/30'}`}>{f.t}</span>
+                  <span className={`text-xs font-sans ${f.v?'text-[var(--fg-color)] opacity-70':'text-[var(--text-muted)] opacity-80'}`}>{f.t}</span>
                 </div>
               ))}
             </div>
@@ -39,3 +39,5 @@ const Premium = () => (
 );
 
 export default Premium;
+
+
