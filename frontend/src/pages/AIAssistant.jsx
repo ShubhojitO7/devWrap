@@ -1,18 +1,36 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedPage from '../components/shared/AnimatedPage';
-import { Send, Upload, Sparkles, FileText, Brain, PenTool } from 'lucide-react';
+import { Send, Upload, Sparkles, FileText, Brain, PenTool, Loader2 } from 'lucide-react';
+import api from '../utils/api';
 
 const AIAssistant = () => {
   const [messages, setMessages] = useState([
     { role: 'assistant', content: 'Hi! I\'m your AI study assistant powered by Gemini Pro. I can help you understand concepts, summarize PDFs, generate quizzes, create flashcards, and write essays. What would you like to learn today?' },
   ]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    setMessages(prev => [...prev, { role: 'user', content: input }, { role: 'assistant', content: 'This is a demo response. Connect the backend with your Gemini API key to get real AI responses. The AI would provide detailed explanations, code examples, and structured learning content based on your question.' }]);
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+    
+    const userMessage = input;
     setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      const { data } = await api.post('/ai/chat', {
+        message: userMessage,
+        history: messages
+      });
+      setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+    } catch (error) {
+      console.error('AI Chat Error:', error);
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again later.' }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -38,8 +56,10 @@ const AIAssistant = () => {
           </div>
           <div className="flex gap-2">
             <button className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)'}}><Upload size={16} className="text-white/40"/></button>
-            <input className="input-glass flex-1" placeholder="Ask anything about your subjects..." value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleSend()}/>
-            <button className="btn-primary px-4" onClick={handleSend}><Send size={16}/></button>
+            <input className="input-glass flex-1" placeholder="Ask anything about your subjects..." value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleSend()} disabled={isLoading} />
+            <button className="btn-primary px-4" onClick={handleSend} disabled={isLoading}>
+              {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16}/>}
+            </button>
           </div>
         </div>
         <div className="text-center text-[11px] font-sans text-white/30">7 / 10 free queries used today · Upgrade to Premium for unlimited</div>
