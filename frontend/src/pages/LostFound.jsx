@@ -15,7 +15,7 @@ const LostFound = () => (
   <AnimatedPage>
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-heading font-bold text-white">Lost & Found</h1>
+        <h1 className="text-xl font-heading font-bold text-[var(--fg-color)]">Lost & Found</h1>
         <button className="btn-primary flex items-center gap-2 text-sm"><Plus size={14}/>Report Item</button>
       </div>
       <div className="flex gap-2">
@@ -34,8 +34,8 @@ const LostFound = () => (
                 <span className="text-[9px] font-sans font-bold px-2 py-0.5 rounded-full uppercase" style={{background:`${it.c}15`,color:it.c,border:`1px solid ${it.c}30`}}>{it.tp}</span>
                 {it.rw && <span className="text-[9px] font-sans text-amber-400">Reward: {it.rw}</span>}
               </div>
-              <h3 className="text-sm font-sans font-semibold text-white/90">{it.t}</h3>
-              <p className="text-[10px] font-sans text-white/30 mt-0.5">{it.l}</p>
+              <h3 className="text-sm font-sans font-semibold text-[var(--fg-color)] opacity-90">{it.t}</h3>
+              <p className="text-[10px] font-sans text-[var(--text-muted)] opacity-80 mt-0.5">{it.l}</p>
             </div>
             <button className="btn-secondary text-[10px] px-3 py-1.5">Contact</button>
           </motion.div>
@@ -46,3 +46,5 @@ const LostFound = () => (
 );
 
 export default LostFound;
+
+
