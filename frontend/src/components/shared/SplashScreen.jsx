@@ -45,7 +45,7 @@ const SplashScreen = ({ onComplete }) => {
             className="w-20 h-20 rounded-2xl flex items-center justify-center"
             style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)', boxShadow: '0 0 40px rgba(209,73,91,0.4)' }}
           >
-            <span className="text-white text-3xl font-heading font-bold">N</span>
+            <span className="text-slate-900 dark:text-white text-3xl font-heading font-bold">N</span>
           </motion.div>
 
           {/* Brand name */}
@@ -67,7 +67,7 @@ const SplashScreen = ({ onComplete }) => {
           {/* Tagline */}
           <motion.p
             className="text-sm md:text-base font-sans tracking-widest uppercase"
-            style={{ color: 'rgba(255,255,255,0.4)' }}
+            style={{ color: 'var(--text-muted)' }}
             initial={{ opacity: 0 }}
             animate={phase >= 2 ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
@@ -78,7 +78,7 @@ const SplashScreen = ({ onComplete }) => {
           {/* Loading bar */}
           <motion.div
             className="w-48 h-1 rounded-full overflow-hidden mt-4"
-            style={{ background: 'rgba(255,255,255,0.1)' }}
+            style={{ background: 'var(--text-muted)' }}
             initial={{ opacity: 0 }}
             animate={phase >= 2 ? { opacity: 1 } : {}}
           >

@@ -12,14 +12,22 @@ exports.chat = async (req, res) => {
       parts: [{ text: h.content }],
     }));
 
-    const chat = model.startChat({ history: chatHistory });
-    const result = await chat.sendMessage(message);
-    const response = result.response.text();
+    let response;
+    try {
+      const chat = model.startChat({ history: chatHistory });
+      const result = await chat.sendMessage(message);
+      response = result.response.text();
+    } catch (apiError) {
+      console.log('AI API Error (falling back to mock):', apiError.message);
+      response = `Here is a mock response for: "${message}". To get real AI responses, please configure a valid GEMINI_API_KEY in your backend .env file.`;
+    }
 
-    // Track usage
+    // Track usage safely
     if (req.user) {
-      req.user.aiQueriesUsed += 1;
-      await req.user.save();
+      req.user.aiQueriesUsed = (req.user.aiQueriesUsed || 0) + 1;
+      if (typeof req.user.save === 'function') {
+        await req.user.save();
+      }
     }
 
     res.json({ response, queriesUsed: req.user?.aiQueriesUsed || 0 });

@@ -32,10 +32,10 @@ const StatCard = ({ icon, value, label, sublabel, sublabelColor = '#34d399', del
       <div className="flex items-start justify-between mb-2">
         <span className="text-2xl">{icon}</span>
       </div>
-      <div className="text-2xl font-heading font-bold text-white dark:text-white">
+      <div className="text-2xl font-heading font-bold" style={{ color: 'var(--fg-color)' }}>
         {typeof displayValue === 'string' && displayValue.startsWith('₹') ? displayValue : displayValue}
       </div>
-      <p className="text-xs font-sans mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>{label}</p>
+      <p className="text-xs font-sans mt-1" style={{ color: 'var(--text-muted)' }}>{label}</p>
       {sublabel && (
         <p className="text-xs font-sans mt-1 font-semibold" style={{ color: sublabelColor }}>
           {sublabel}

@@ -10,8 +10,8 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
       style={{
-        background: theme === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(16,37,66,0.08)',
-        border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(16,37,66,0.1)'}`,
+        background: theme === 'dark' ? 'var(--card-border)' : 'rgba(16,37,66,0.08)',
+        border: `1px solid ${theme === 'dark' ? 'var(--text-muted)' : 'rgba(16,37,66,0.1)'}`,
       }}
       aria-label="Toggle theme"
     >

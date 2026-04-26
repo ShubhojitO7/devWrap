@@ -33,7 +33,7 @@ const menuSections = [
     title: 'PERSONAL',
     items: [
       { label: 'Peer Study', icon: Users, path: '/ai', badge: null },
-      { label: 'Habit Tracker', icon: Heart, path: '/routine', badge: null },
+      { label: 'Habit Tracker', icon: Heart, path: '/habits', badge: null },
       { label: 'Budget', icon: BarChart3, path: '/budget', badge: null },
       { label: 'Pomodoro', icon: Timer, path: '/routine', badge: null },
       { label: 'Wellbeing', icon: Heart, path: '/routine', badge: null },
@@ -42,43 +42,91 @@ const menuSections = [
   },
 ];
 
-const Sidebar = ({ collapsed, setCollapsed }) => {
+<<<<<<< HEAD
+const Sidebar = ({ collapsed, setCollapsed, mobileOpen, setMobileOpen }) => {
+=======
+const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
   const location = useLocation();
 
   return (
     <motion.aside
-      className="fixed left-0 top-0 bottom-0 z-40 flex flex-col"
+<<<<<<< HEAD
+      className={`fixed left-0 top-0 bottom-0 z-40 flex flex-col transition-transform lg:transition-none ${
+        mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+      }`}
+=======
+      className={`fixed left-0 top-0 bottom-0 z-40 flex flex-col ${isMobile ? 'w-64' : ''}`}
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
       initial={false}
-      animate={{ width: collapsed ? 72 : 240 }}
+      animate={{ width: isMobile ? 256 : (collapsed ? 72 : 240) }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       style={{
-        background: 'rgba(6, 11, 20, 0.95)',
+<<<<<<< HEAD
+        background: 'var(--sidebar-bg)',
         backdropFilter: 'blur(20px)',
-        borderRight: '1px solid rgba(255,255,255,0.06)',
+        borderRight: '1px solid var(--sidebar-border)',
       }}
     >
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-white/5">
+      <div className="flex items-center gap-3 px-4 py-5 border-b" style={{ borderColor: 'var(--card-border)' }}>
         <motion.div
           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
           whileHover={{ scale: 1.05 }}
         >
-          <span className="text-white text-lg font-heading font-bold">N</span>
+          <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
         </motion.div>
         <AnimatePresence>
           {!collapsed && (
             <motion.span
-              className="text-lg font-heading font-bold text-white whitespace-nowrap"
+              className="text-lg font-heading font-bold whitespace-nowrap"
+              style={{ color: 'var(--fg-color)' }}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2 }}
             >
-              Study<span className="text-crimson-rose">Nest</span>
+              Study<span className="text-[#D1495B]">Nest</span>
             </motion.span>
           )}
         </AnimatePresence>
+=======
+        background: 'rgba(6, 11, 20, 0.98)',
+        backdropFilter: 'blur(30px)',
+        borderRight: '1px solid var(--card-border)',
+      }}
+    >
+      {/* Logo */}
+      <div className="flex items-center justify-between px-4 py-5 border-b border-slate-900/10 dark:border-white/10">
+        <div className="flex items-center gap-3">
+          <motion.div
+            className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
+          </motion.div>
+          <AnimatePresence>
+            {(!collapsed || isMobile) && (
+              <motion.span
+                className="text-lg font-heading font-bold text-slate-900 dark:text-white whitespace-nowrap"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                Study<span className="text-crimson-rose">Nest</span>
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+        {isMobile && (
+          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-slate-900/5 dark:bg-white/5 text-slate-900/50 dark:text-white/50">
+            <ChevronLeft size={16} />
+          </button>
+        )}
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
       </div>
 
       {/* Menu sections */}
@@ -86,10 +134,10 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         {menuSections.map((section) => (
           <div key={section.title}>
             <AnimatePresence>
-              {!collapsed && (
+              {(!collapsed || isMobile) && (
                 <motion.p
                   className="px-3 mb-2 text-[10px] font-sans font-semibold tracking-widest"
-                  style={{ color: 'rgba(255,255,255,0.3)' }}
+                  style={{ color: 'var(--text-muted)' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -103,16 +151,24 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                 const isActive = location.pathname === item.path && item.label === 'Dashboard' ? location.pathname === '/' :
                   location.pathname === item.path;
                 return (
-                  <NavLink key={item.label} to={item.path}>
+<<<<<<< HEAD
+                  <NavLink 
+                    key={item.label} 
+                    to={item.path}
+                    onClick={() => setMobileOpen(false)}
+                  >
+=======
+                  <NavLink key={item.label} to={item.path} onClick={isMobile ? closeMobile : undefined}>
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
                     <motion.div
                       className={`sidebar-item ${isActive ? 'active' : ''}`}
                       whileHover={{ x: 3 }}
                       whileTap={{ scale: 0.98 }}
-                      style={collapsed ? { justifyContent: 'center', padding: '10px' } : {}}
+                      style={(collapsed && !isMobile) ? { justifyContent: 'center', padding: '10px' } : {}}
                     >
                       <item.icon size={18} className="flex-shrink-0" />
                       <AnimatePresence>
-                        {!collapsed && (
+                        {(!collapsed || isMobile) && (
                           <motion.span
                             className="flex-1 font-sans text-sm whitespace-nowrap"
                             initial={{ opacity: 0 }}
@@ -123,7 +179,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                           </motion.span>
                         )}
                       </AnimatePresence>
-                      {!collapsed && item.badge && (
+                      {(!collapsed || isMobile) && item.badge && (
                         <span
                           className="text-[10px] font-sans font-bold px-2 py-0.5 rounded-full"
                           style={{
@@ -146,7 +202,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       {/* AI queries widget */}
       <div className="px-3 pb-4">
         <AnimatePresence>
-          {!collapsed && (
+          {(!collapsed || isMobile) && (
             <motion.div
               className="glass-card p-3 rounded-xl"
               initial={{ opacity: 0, y: 10 }}
@@ -159,7 +215,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                 </span>
                 <Sparkles size={14} style={{ color: '#a78bfa' }} />
               </div>
-              <div className="w-full h-1.5 rounded-full mb-2" style={{ background: 'rgba(255,255,255,0.1)' }}>
+              <div className="w-full h-1.5 rounded-full mb-2" style={{ background: 'var(--card-border)', opacity: 0.2 }}>
                 <motion.div
                   className="h-full rounded-full"
                   style={{ background: 'linear-gradient(90deg, #a78bfa, #D1495B)' }}
@@ -168,8 +224,13 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                   transition={{ delay: 1, duration: 1 }}
                 />
               </div>
-              <p className="text-[10px] font-sans" style={{ color: 'rgba(255,255,255,0.4)' }}>
+<<<<<<< HEAD
+              <p className="text-[10px] font-sans" style={{ color: 'var(--text-muted)' }}>
                 7 / 10 — Upgrade for unlimited
+=======
+              <p className="text-[10px] font-sans" style={{ color: 'var(--text-muted)' }}>
+                7 / 10 — <NavLink to="/premium" className="text-crimson-rose hover:underline">Upgrade for unlimited</NavLink>
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
               </p>
             </motion.div>
           )}
@@ -177,16 +238,32 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       </div>
 
       {/* Collapse button */}
+<<<<<<< HEAD
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 w-6 h-6 rounded-full flex items-center justify-center border transition-all duration-200 hover:scale-110"
+        className="absolute -right-3 top-20 w-6 h-6 rounded-full hidden lg:flex items-center justify-center border transition-all duration-200 hover:scale-110"
         style={{
-          background: '#102542',
-          borderColor: 'rgba(255,255,255,0.15)',
+          background: 'var(--sidebar-bg)',
+          borderColor: 'var(--sidebar-border)',
+          color: 'var(--fg-color)'
         }}
       >
-        {collapsed ? <ChevronRight size={12} className="text-white/60" /> : <ChevronLeft size={12} className="text-white/60" />}
+        {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
       </button>
+=======
+      {!isMobile && (
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="absolute -right-3 top-20 w-6 h-6 rounded-full flex items-center justify-center border transition-all duration-200 hover:scale-110"
+          style={{
+            background: '#102542',
+            borderColor: 'rgba(255,255,255,0.15)',
+          }}
+        >
+          {collapsed ? <ChevronRight size={12} className="text-slate-900/50 dark:text-white/50" /> : <ChevronLeft size={12} className="text-slate-900/50 dark:text-white/50" />}
+        </button>
+      )}
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
     </motion.aside>
   );
 };

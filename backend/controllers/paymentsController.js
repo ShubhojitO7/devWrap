@@ -2,10 +2,15 @@ const Razorpay = require('razorpay');
 const crypto = require('crypto');
 const User = require('../models/User');
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
+let razorpay;
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+} else {
+  console.warn('⚠️ Razorpay credentials missing. Payment features will be disabled.');
+}
 
 exports.createOrder = async (req, res) => {
   try {
@@ -55,6 +60,28 @@ exports.verifyPayment = async (req, res) => {
     });
 
     res.json({ success: true, message: 'Payment verified, plan upgraded!' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.upgradePlan = async (req, res) => {
+  try {
+    const { plan } = req.body;
+    const mongoose = require('mongoose');
+
+    if (mongoose.connection.readyState !== 1) {
+      console.log(`⭐ Upgrading user ${req.user.id} to ${plan} (Mock Mode)`);
+      return res.json({ success: true, message: 'Plan upgraded (Mock Mode)' });
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {
+      plan,
+      aiQueriesUsed: 0,
+      planExpiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // Default 30 days
+    });
+
+    res.json({ success: true, message: 'Plan upgraded successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
