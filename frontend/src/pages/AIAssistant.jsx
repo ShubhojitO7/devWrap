@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedPage from '../components/shared/AnimatedPage';
 import { Send, Upload, Sparkles, FileText, Brain, PenTool, Loader2 } from 'lucide-react';
 import api from '../utils/api';
+<<<<<<< HEAD
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
+=======
+>>>>>>> b1bfd2eb95596928a4e4cf234dfe689d00dc9bcc
 
 const AIAssistant = () => {
   const { user } = useAuth();
@@ -15,11 +18,36 @@ const AIAssistant = () => {
     { role: 'assistant', content: `Hi ${user?.name || 'there'}! I'm your AI study assistant powered by Gemini Pro. I can help you understand concepts, summarize PDFs, generate quizzes, create flashcards, and write essays. What would you like to learn today?` },
   ]);
   const [input, setInput] = useState('');
+<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+=======
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+    
+    const userMessage = input;
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      const { data } = await api.post('/ai/chat', {
+        message: userMessage,
+        history: messages
+      });
+      setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+    } catch (error) {
+      console.error('AI Chat Error:', error);
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again later.' }]);
+    } finally {
+      setIsLoading(false);
+    }
+>>>>>>> b1bfd2eb95596928a4e4cf234dfe689d00dc9bcc
   };
 
   useEffect(() => {
@@ -123,6 +151,7 @@ const AIAssistant = () => {
             )}
             <div ref={chatEndRef} />
           </div>
+<<<<<<< HEAD
 
           <div className="flex gap-2 bg-white/5 p-2 rounded-2xl border border-white/5">
             <button className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-white/10" title="Upload PDF">
@@ -142,6 +171,13 @@ const AIAssistant = () => {
               disabled={!input.trim() || loading}
             >
               <Send size={18}/>
+=======
+          <div className="flex gap-2">
+            <button className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)'}}><Upload size={16} className="text-white/40"/></button>
+            <input className="input-glass flex-1" placeholder="Ask anything about your subjects..." value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleSend()} disabled={isLoading} />
+            <button className="btn-primary px-4" onClick={handleSend} disabled={isLoading}>
+              {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16}/>}
+>>>>>>> b1bfd2eb95596928a4e4cf234dfe689d00dc9bcc
             </button>
           </div>
         </div>

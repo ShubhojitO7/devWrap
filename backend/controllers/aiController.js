@@ -8,7 +8,7 @@ exports.chat = async (req, res) => {
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
 
     const chatHistory = (history || []).map(h => ({
-      role: h.role,
+      role: h.role === 'assistant' ? 'model' : h.role,
       parts: [{ text: h.content }],
     }));
 
