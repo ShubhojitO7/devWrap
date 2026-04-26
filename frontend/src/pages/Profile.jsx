@@ -28,10 +28,10 @@ const Profile = () => {
 
   return (
     <AnimatedPage>
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-heading font-bold text-white">My Profile</h1>
-          <button className="text-xs font-sans text-crimson-rose hover:underline flex items-center gap-1">Edit Profile <ChevronRight size={12}/></button>
+      <div className="max-w-4xl mx-auto space-y-12 pb-24">
+        <div className="flex items-center justify-between px-2">
+          <h1 className="text-2xl font-heading font-bold text-white">My Profile</h1>
+          <button className="text-sm font-sans text-crimson-rose hover:underline flex items-center gap-1">Edit Profile <ChevronRight size={14}/></button>
         </div>
 
         {/* Hero Section */}

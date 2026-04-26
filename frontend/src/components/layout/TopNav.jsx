@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Search, Bell, Crown } from 'lucide-react';
+import { Search, Bell, Crown, Menu } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
 import { useAuth } from '../../context/AuthContext';
 import { motion } from 'framer-motion';
@@ -12,20 +12,29 @@ const navTabs = [
   { label: 'Profile', path: '/profile' },
 ];
 
-const TopNav = () => {
+const TopNav = ({ toggleMobileSidebar }) => {
   const { user } = useAuth();
 
   return (
     <header
-      className="sticky top-0 z-30 flex items-center justify-between px-6 py-3"
+      className="sticky top-0 z-30 flex items-center justify-between px-4 md:px-6 py-3"
       style={{
         background: 'rgba(6, 11, 20, 0.8)',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
-      {/* Nav Tabs */}
-      <nav className="hidden md:flex items-center gap-1">
+      <div className="flex items-center gap-4">
+        {/* Mobile Toggle */}
+        <button 
+          className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-white/60"
+          onClick={toggleMobileSidebar}
+        >
+          <Menu size={20} />
+        </button>
+
+        {/* Nav Tabs */}
+        <nav className="hidden md:flex items-center gap-1">
         {navTabs.map((tab) => (
           <NavLink
             key={tab.path}

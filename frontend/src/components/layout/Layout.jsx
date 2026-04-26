@@ -1,22 +1,62 @@
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from './Sidebar';
 import TopNav from './TopNav';
 
 const Layout = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) setShowMobileSidebar(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <div className="min-h-screen">
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+    <div className="min-h-screen relative">
+      {/* Desktop Sidebar */}
+      {!isMobile && <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />}
+      
+      {/* Mobile Sidebar Overlay */}
+      <AnimatePresence>
+        {isMobile && showMobileSidebar && (
+          <>
+            <motion.div 
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowMobileSidebar(false)}
+            />
+            <motion.div 
+              className="fixed left-0 top-0 bottom-0 z-50"
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            >
+              <Sidebar collapsed={false} setCollapsed={() => {}} isMobile={true} closeMobile={() => setShowMobileSidebar(false)} />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       <motion.main
         className="min-h-screen transition-all duration-300"
-        animate={{ marginLeft: collapsed ? 72 : 240 }}
+        animate={{ 
+          marginLeft: isMobile ? 0 : (collapsed ? 72 : 240) 
+        }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       >
-        <TopNav />
-        <div className="p-6">
+        <TopNav toggleMobileSidebar={() => setShowMobileSidebar(true)} />
+        <div className="p-4 md:p-8 max-w-7xl mx-auto">
           <Outlet />
         </div>
 

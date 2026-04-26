@@ -39,14 +39,14 @@ const Habits = () => {
 
   return (
     <AnimatedPage>
-      <div className="space-y-6 max-w-5xl mx-auto">
-        <div className="flex items-center justify-between">
+      <div className="space-y-12 max-w-5xl mx-auto pb-24">
+        <div className="flex items-center justify-between px-2">
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Habit Tracker</h1>
-            <p className="text-sm font-sans text-white/40">Consistency is the key to mastery.</p>
+            <h1 className="text-3xl font-heading font-bold text-white">Habit Tracker</h1>
+            <p className="text-base font-sans text-white/40 mt-1">Consistency is the key to mastery.</p>
           </div>
           <button onClick={handleAddHabit} className="btn-primary flex items-center gap-2">
-            <Plus size={18}/> New Habit
+            <Plus size={20}/> New Habit
           </button>
         </div>
 
