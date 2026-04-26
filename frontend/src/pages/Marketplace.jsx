@@ -13,10 +13,17 @@ const listings = [
 
 const Marketplace = () => (
   <AnimatedPage>
+<<<<<<< HEAD
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-heading font-bold" style={{ color: 'var(--fg-color)' }}>Campus Marketplace</h1>
         <button className="btn-primary flex items-center gap-2 text-sm"><Plus size={14}/>List Item</button>
+=======
+    <div className="space-y-10 pb-24 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-2">
+        <h1 className="text-3xl font-heading font-bold text-white">Campus Marketplace</h1>
+        <button className="btn-primary flex items-center gap-2 text-sm px-6"><Plus size={16}/>List Item</button>
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
       </div>
       <div className="flex gap-3">
         <div className="relative flex-1">

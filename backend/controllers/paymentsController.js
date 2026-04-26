@@ -64,3 +64,25 @@ exports.verifyPayment = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.upgradePlan = async (req, res) => {
+  try {
+    const { plan } = req.body;
+    const mongoose = require('mongoose');
+
+    if (mongoose.connection.readyState !== 1) {
+      console.log(`⭐ Upgrading user ${req.user.id} to ${plan} (Mock Mode)`);
+      return res.json({ success: true, message: 'Plan upgraded (Mock Mode)' });
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {
+      plan,
+      aiQueriesUsed: 0,
+      planExpiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // Default 30 days
+    });
+
+    res.json({ success: true, message: 'Plan upgraded successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

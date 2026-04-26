@@ -6,7 +6,15 @@ const protect = async (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+      
+      const mongoose = require('mongoose');
+      if (mongoose.connection.readyState !== 1) {
+        // Mock mode: Just attach the ID to req.user
+        req.user = { id: decoded.id, plan: 'free' };
+        return next();
+      }
+
       req.user = await User.findById(decoded.id).select('-password');
       if (!req.user) {
         return res.status(401).json({ error: 'User not found' });

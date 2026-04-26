@@ -13,7 +13,11 @@ const connectDB = async () => {
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`❌ MongoDB Connection Error: ${error.message}`);
+<<<<<<< HEAD
     console.warn('⚠️ Server will run without database connectivity.');
+=======
+    console.log('⚠️ Running in offline mode (No DB connection)');
+>>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
   }
 };
 
