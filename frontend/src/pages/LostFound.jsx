@@ -20,7 +20,7 @@ const LostFound = () => (
       </div>
       <div className="flex gap-2">
         {['All','Lost','Found'].map((f,i)=>(
-          <button key={f} className="px-5 py-2 rounded-full text-xs font-sans font-semibold transition-all" style={{background:i===0?'rgba(209,73,91,0.15)':'rgba(255,255,255,0.05)',color:i===0?'#D1495B':'rgba(255,255,255,0.5)',border:`1px solid ${i===0?'rgba(209,73,91,0.3)':'rgba(255,255,255,0.08)'}`}}>{f}</button>
+          <button key={f} className="px-5 py-2 rounded-full text-xs font-sans font-semibold transition-all" style={{background:i===0?'rgba(209,73,91,0.15)':'var(--card-border)',color:i===0?'#D1495B':'var(--fg-color)',border:`1px solid ${i===0?'rgba(209,73,91,0.3)':'rgba(255,255,255,0.08)'}`}}>{f}</button>
         ))}
       </div>
       <div className="grid md:grid-cols-2 gap-4">

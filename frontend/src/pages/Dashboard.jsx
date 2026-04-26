@@ -78,7 +78,7 @@ const Dashboard = () => {
 =======
         <div className="py-4">
           <h1 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Good morning, {user.name} 👋</h1>
-          <p className="text-base font-sans mt-2" style={{color:'rgba(255,255,255,0.4)'}}>B.Tech {user.branch} · Semester {user.semester} · CGPA {user.cgpa} · 3 things due this week</p>
+          <p className="text-base font-sans mt-2" style={{color:'var(--text-muted)'}}>B.Tech {user.branch} · Semester {user.semester} · CGPA {user.cgpa} · 3 things due this week</p>
         </div>
 
         {/* Stat Cards */}
@@ -133,13 +133,13 @@ const Dashboard = () => {
                 </div>
 =======
         <div className="space-y-4">
-          <h2 className="text-sm font-heading font-bold text-slate-900/ dark:text-white/ uppercase tracking-widest px-1">Quick Actions</h2>
+          <h2 className="text-sm font-heading font-bold text-slate-900/50 dark:text-white/50 uppercase tracking-widest px-1">Quick Actions</h2>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
             {quickActions.map((a,i) => (
               <Link to={a.path} key={i}>
                 <motion.div className="quick-action h-full" whileHover={{y:-5}} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:i*0.08}}>
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-1" style={{background:`${a.color}15`,color:a.color}}>{a.icon}</div>
-                  <span className="text-xs font-sans font-medium text-slate-900/ dark:text-white/">{a.label}</span>
+                  <span className="text-xs font-sans font-medium text-slate-900/50 dark:text-white/50">{a.label}</span>
                 </motion.div>
               </Link>
             ))}
@@ -156,11 +156,11 @@ const Dashboard = () => {
             <div className="space-y-5">
               {[{s:'OS',p:88,c:'#34d399',l:'Safe'},{s:'DBMS',p:75,c:'#fbbf24',l:'Caution'},{s:'CN',p:92,c:'#34d399',l:'Safe'},{s:'ML',p:68,c:'#f87171',l:'Risk'},{s:'SE',p:80,c:'#34d399',l:'Safe'}].map((a,i)=>(
                 <div key={i} className="flex items-center gap-4">
-                  <span className="text-xs font-sans text-slate-900/ dark:text-white/ w-14 font-medium">{a.s}</span>
-                  <div className="flex-1 h-2.5 rounded-full overflow-hidden" style={{background:'rgba(255,255,255,0.06)'}}>
+                  <span className="text-xs font-sans text-slate-900/50 dark:text-white/50 w-14 font-medium">{a.s}</span>
+                  <div className="flex-1 h-2.5 rounded-full overflow-hidden" style={{background:'var(--card-border)'}}>
                     <motion.div className="h-full rounded-full" style={{background:a.c}} initial={{width:'0%'}} animate={{width:`${a.p}%`}} transition={{delay:0.5+i*0.1,duration:0.8}}/>
                   </div>
-                  <span className="text-[11px] font-sans text-slate-900/ dark:text-white/ w-12 text-right">{a.p}%</span>
+                  <span className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 w-12 text-right">{a.p}%</span>
                   <span className="text-[10px] font-sans font-bold w-12 text-right" style={{color:a.c}}>{a.l}</span>
                 </div>
               ))}
@@ -173,13 +173,13 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{t:'CN Lab Report',s:'Computer Networks',st:'Done',c:'#34d399'},{t:'OS Assignment 3 — Memory',s:'Operating Systems',st:'28 Apr',c:'#fbbf24'},{t:'DBMS ER Diagram project',s:'Database Management',st:'30 Apr',c:'#fb923c'},{t:'ML Mini Project',s:'Machine Learning',st:'5 May',c:'#f87171'}].map((a,i)=>(
-                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0" style={{border:`1.5px solid ${a.c}40`, background:`${a.c}10`}}>
                     {a.st==='Done' && <CheckCircle size={14} style={{color:a.c}}/>}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{a.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{a.s}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{a.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-0.5">{a.s}</p>
                   </div>
                   <span className="text-[11px] font-sans font-bold" style={{color:a.c}}>{a.st}</span>
                 </div>
@@ -198,12 +198,12 @@ const Dashboard = () => {
             <div className="space-y-4 mb-6">
               <div className="flex gap-3 items-start">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2.5 flex-shrink-0"/>
-                <div className="glass-card p-4 text-xs font-sans text-slate-900/ dark:text-white/ max-w-md leading-relaxed">Hi {user.name}! I can help with any subject. Ask me, upload a PDF, or generate quiz questions for your upcoming exam!</div>
+                <div className="glass-card p-4 text-xs font-sans text-slate-900/50 dark:text-white/50 max-w-md leading-relaxed">Hi {user.name}! I can help with any subject. Ask me, upload a PDF, or generate quiz questions for your upcoming exam!</div>
               </div>
               <div className="flex justify-end"><div className="px-5 py-3 rounded-2xl text-xs font-sans" style={{background:'linear-gradient(135deg,#D1495B,#b83a4a)',color:'white', boxShadow:'0 4px 15px rgba(209,73,91,0.2)'}}>Explain virtual memory with page replacement algorithms</div></div>
               <div className="flex gap-3 items-start">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2.5 flex-shrink-0"/>
-                <div className="glass-card p-4 text-xs font-sans text-slate-900/ dark:text-white/ max-w-md leading-relaxed">Virtual memory lets OS use disk as RAM extension. Key algorithms: <b className="text-amber-400">LRU</b> (least recently used), <b className="text-amber-400">FIFO</b> (first in first out — simplest), and <b className="text-amber-400">Optimal</b> (best but impractical). LRU = Optimal in practice.</div>
+                <div className="glass-card p-4 text-xs font-sans text-slate-900/50 dark:text-white/50 max-w-md leading-relaxed">Virtual memory lets OS use disk as RAM extension. Key algorithms: <b className="text-amber-400">LRU</b> (least recently used), <b className="text-amber-400">FIFO</b> (first in first out — simplest), and <b className="text-amber-400">Optimal</b> (best but impractical). LRU = Optimal in practice.</div>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
               </div>
             </div>
@@ -227,7 +227,7 @@ const Dashboard = () => {
                   <div className="w-2 h-2 rounded-full" style={{background:s.c}}/>
                   <span className="text-xs font-sans" style={{ color: 'var(--fg-color)', opacity: 0.8 }}>{s.s}</span>
 =======
-                <button key={t} onClick={() => navigate('/ai', { state: { initialQuery: t } })} className="px-4 py-2 rounded-xl text-[11px] font-sans border transition-all hover:border-crimson-rose-400/30 hover:bg-slate-900/ dark:bg-white/" style={{borderColor:'rgba(255,255,255,0.1)',color:'rgba(255,255,255,0.5)'}}>{t}</button>
+                <button key={t} onClick={() => navigate('/ai', { state: { initialQuery: t } })} className="px-4 py-2 rounded-xl text-[11px] font-sans border transition-all hover:border-crimson-rose-400/30 hover:bg-slate-900/ dark:hover:bg-white/" style={{borderColor:'var(--text-muted)',color:'var(--fg-color)'}}>{t}</button>
               ))}
             </div>
             <form onSubmit={handleAISubmit} className="flex gap-3">
@@ -245,10 +245,10 @@ const Dashboard = () => {
             <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white mb-6">Today's Timeline</h3>
             <div className="space-y-1">
               {[{t:'9am',s:'OS',c:'#fb923c'},{t:'11am',s:'DBMS',c:'#60a5fa'},{t:'2pm',s:'ML Lab',c:'#a78bfa'},{t:'4pm',s:'Study',c:'#34d399'}].map((s,i)=>(
-                <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/ dark:border-white/ last:border-0">
-                  <span className="text-[11px] font-sans text-slate-900/ dark:text-white/ w-12">{s.t}</span>
+                <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/10 dark:border-white/10 last:border-0">
+                  <span className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 w-12">{s.t}</span>
                   <div className="w-2.5 h-2.5 rounded-full" style={{background:s.c, boxShadow:`0 0 10px ${s.c}40`}}/>
-                  <span className="text-sm font-sans text-slate-900/ dark:text-white/">{s.s}</span>
+                  <span className="text-sm font-sans text-slate-900/50 dark:text-white/50">{s.s}</span>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
                 </div>
               ))}
@@ -290,15 +290,15 @@ const Dashboard = () => {
               <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white">Budget</h3>
               <button className="text-[11px] font-sans text-blue-400 hover:underline">April →</button>
             </div>
-            <div className="mb-4"><span className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹4,280</span><span className="text-sm font-sans text-slate-900/ dark:text-white/"> / ₹6,000</span></div>
-            <div className="w-full h-2.5 rounded-full mb-5 overflow-hidden" style={{background:'rgba(255,255,255,0.06)'}}>
+            <div className="mb-4"><span className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹4,280</span><span className="text-sm font-sans text-slate-900/50 dark:text-white/50"> / ₹6,000</span></div>
+            <div className="w-full h-2.5 rounded-full mb-5 overflow-hidden" style={{background:'var(--card-border)'}}>
               <motion.div className="h-full rounded-full" style={{background:'linear-gradient(90deg,#60a5fa,#a78bfa)'}} initial={{width:'0%'}} animate={{width:'71%'}} transition={{delay:0.8,duration:1}}/>
             </div>
             <div className="space-y-3">
               {[{c:'Food',a:'₹1,840',col:'#fb923c'},{c:'Transport',a:'₹960',col:'#60a5fa'},{c:'Books',a:'₹620',col:'#a78bfa'},{c:'Others',a:'₹860',col:'#fbbf24'}].map((e,i)=>(
                 <div key={i} className="flex items-center justify-between py-1">
-                  <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full shadow-lg" style={{background:e.col, boxShadow:`0 0 8px ${e.col}60`}}/><span className="text-xs font-sans text-slate-900/ dark:text-white/">{e.c}</span></div>
-                  <span className="text-xs font-sans font-bold text-slate-900/ dark:text-white/">{e.a}</span>
+                  <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full shadow-lg" style={{background:e.col, boxShadow:`0 0 8px ${e.col}60`}}/><span className="text-xs font-sans text-slate-900/50 dark:text-white/50">{e.c}</span></div>
+                  <span className="text-xs font-sans font-bold text-slate-900/50 dark:text-white/50">{e.a}</span>
                 </div>
               ))}
             </div>
@@ -312,7 +312,7 @@ const Dashboard = () => {
             <div className="space-y-5">
               {habits.map((h,i)=>(
                 <div key={i} className="space-y-2">
-                  <p className="text-xs font-sans font-medium text-slate-900/ dark:text-white/">{h.h}</p>
+                  <p className="text-xs font-sans font-medium text-slate-900/50 dark:text-white/50">{h.h}</p>
                   <div className="flex items-center gap-1.5">
                     {['M','T','W','T','F','S','S'].map((d,j)=>(
                       <button 
@@ -320,8 +320,8 @@ const Dashboard = () => {
                         onClick={() => toggleHabitDay(i, j)}
                         className="w-7 h-7 rounded-lg text-[10px] font-sans font-bold flex items-center justify-center transition-all hover:scale-110 active:scale-95" 
                         style={{
-                          background: h.s[j] ? `${h.color}20` : 'rgba(255,255,255,0.03)',
-                          color: h.s[j] ? h.color : 'rgba(255,255,255,0.2)',
+                          background: h.s[j] ? `${h.color}20` : 'var(--card-border)',
+                          color: h.s[j] ? h.color : 'var(--text-muted)',
                           border: h.s[j] ? `1px solid ${h.color}40` : '1px solid transparent'
                         }}
                       >
@@ -336,7 +336,7 @@ const Dashboard = () => {
           </div>
           <div className="glass-card p-6">
             <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white mb-4">Wellbeing check</h3>
-            <p className="text-xs font-sans text-slate-900/ dark:text-white/ mb-3">How are you feeling today?</p>
+            <p className="text-xs font-sans text-slate-900/50 dark:text-white/50 mb-3">How are you feeling today?</p>
             <div className="flex gap-2 mb-2 justify-between">
               {[
                 {e:'😞', n:'Down'},
@@ -346,18 +346,18 @@ const Dashboard = () => {
                 {e:'🤩', n:'Awesome'}
               ].map((m,i)=>(
                 <div key={i} className="flex flex-col items-center gap-2">
-                  <button className="w-10 h-10 rounded-2xl text-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-slate-900/ dark:bg-white/" style={{background:i===3?'rgba(52,211,153,0.15)':'rgba(255,255,255,0.03)',border:i===3?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{m.e}</button>
-                  <span className="text-[9px] font-sans text-slate-900/ dark:text-white/ font-bold uppercase tracking-tighter">{m.n}</span>
+                  <button className="w-10 h-10 rounded-2xl text-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-slate-900/ dark:hover:bg-white/" style={{background:i===3?'rgba(52,211,153,0.15)':'var(--card-border)',border:i===3?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{m.e}</button>
+                  <span className="text-[9px] font-sans text-slate-900/50 dark:text-white/50 font-bold uppercase tracking-tighter">{m.n}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[11px] font-sans font-bold text-slate-900/ dark:text-white/ mb-3 mt-6">This week's mood</p>
+            <p className="text-[11px] font-sans font-bold text-slate-900/50 dark:text-white/50 mb-3 mt-6">This week's mood</p>
             <div className="flex gap-2 mb-4">
               {['M','T','W','T','F'].map((d,i)=>(
                 <div key={i} className="w-8 h-8 rounded-xl text-[10px] font-sans font-bold flex items-center justify-center" style={{background:['rgba(52,211,153,0.15)','rgba(52,211,153,0.15)','rgba(251,191,36,0.15)','rgba(52,211,153,0.15)','rgba(96,165,250,0.15)'][i],color:['#34d399','#34d399','#fbbf24','#34d399','#60a5fa'][i]}}>{d}</div>
               ))}
             </div>
-            <div className="glass-card p-4 text-xs font-sans text-slate-900/ dark:text-white/ leading-relaxed border-glow">Tip: You've had a good week! Remember to take a 10-min break every hour. Staying hydrated boosts focus by 15%.</div>
+            <div className="glass-card p-4 text-xs font-sans text-slate-900/50 dark:text-white/50 leading-relaxed border-glow">Tip: You've had a good week! Remember to take a 10-min break every hour. Staying hydrated boosts focus by 15%.</div>
           </div>
         </div>
 
@@ -371,19 +371,19 @@ const Dashboard = () => {
             </div>
             <div className="space-y-4">
               <div className="relative">
-                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" />
+                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" />
                 <input className="input-glass pl-9 py-2 w-full text-[11px]" placeholder="Search library books..."/>
               </div>
               <div className="space-y-1">
-                <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ uppercase tracking-widest font-bold mb-2">My Borrowed Books</p>
+                <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 uppercase tracking-widest font-bold mb-2">My Borrowed Books</p>
                 {books.map((b,i)=>(
-                  <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/ dark:border-white/ last:border-0">
-                    <div className="w-10 h-10 rounded-xl bg-slate-900/ dark:bg-white/ flex items-center justify-center flex-shrink-0">
+                  <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/10 dark:border-white/10 last:border-0">
+                    <div className="w-10 h-10 rounded-xl bg-slate-900/5 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
                       <BookOpen size={18} style={{color:b.color}}/>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/ leading-tight">{b.title}</p>
-                      <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ mt-1">{b.author} · Due: {b.due}</p>
+                      <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50 leading-tight">{b.title}</p>
+                      <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 mt-1">{b.author} · Due: {b.due}</p>
                     </div>
                     <span className="text-[9px] font-sans font-bold px-2 py-1 rounded-lg" style={{background:`${b.color}15`, color:b.color, border:`1px solid ${b.color}30`}}>{b.status}</span>
                   </div>
@@ -419,13 +419,13 @@ const Dashboard = () => {
                   <span className="text-[10px] font-sans font-semibold" style={{color:a.c}}>{a.st}</span>
 =======
 >>>>>>> feb9acbb521dfd9b2d488a15d5d572baac200e6e
-                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{background:`${l.c}10`, border:`1px solid ${l.c}20`}}>
                     <ShoppingBag size={18} style={{color:l.c}}/>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{l.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{l.d}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{l.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-0.5">{l.d}</p>
                   </div>
                   <span className="text-sm font-heading font-bold text-slate-900 dark:text-white">{l.p}</span>
                 </div>
@@ -440,14 +440,14 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{d:'28',m:'APR',t:'Hackathon 2026 — Registration',l:'Main Auditorium · 10:00 AM',tag:'Tech',tc:'#60a5fa'},{d:'30',m:'APR',t:'Cultural Fest — Music Night',l:'Open Ground · 6:00 PM',tag:'Culture',tc:'#a78bfa'},{d:'2',m:'MAY',t:'Alumni Talk — Career in AI/ML',l:'Seminar Hall · 11:00 AM',tag:'Career',tc:'#34d399'}].map((e,i)=>(
-                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <div className="w-12 h-12 rounded-2xl flex flex-col items-center justify-center text-center flex-shrink-0" style={{background:'rgba(96,165,250,0.08)',border:'1px solid rgba(96,165,250,0.15)'}}>
                     <span className="text-sm font-sans font-bold text-blue-400">{e.d}</span>
                     <span className="text-[8px] font-sans font-bold text-blue-400/60">{e.m}</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/ leading-tight">{e.t}</p>
-                    <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ mt-1">{e.l}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50 leading-tight">{e.t}</p>
+                    <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 mt-1">{e.l}</p>
                     <span className="text-[9px] font-sans font-bold px-2.5 py-1 rounded-full mt-2 inline-block uppercase tracking-wider" style={{background:`${e.tc}10`,color:e.tc, border:`1px solid ${e.tc}20`}}>{e.tag}</span>
                   </div>
 <<<<<<< HEAD
@@ -510,13 +510,13 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{t:'OS Unit 4 — Memory Management',s:'CSE Sem 6',r:5,d:248},{t:'DBMS — ER Diagrams & Normalization',s:'CSE Sem 5',r:4.5,d:194},{t:'CN — TCP/IP Complete Notes',s:'CSE Sem 6',r:5,d:312},{t:'ML — Regression & Classification',s:'CSE Sem 6',r:4,d:156}].map((n,i)=>(
-                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/ dark:border-white/ last:border-0">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/ dark:bg-white/ flex items-center justify-center flex-shrink-0">
-                    <FileText size={20} className="text-slate-900/ dark:text-white/"/>
+                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/10 dark:border-white/10 last:border-0">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900/5 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
+                    <FileText size={20} className="text-slate-900/50 dark:text-white/50"/>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{n.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-1">{n.s} · {'★'.repeat(Math.floor(n.r))} · {n.d} downloads</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{n.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-1">{n.s} · {'★'.repeat(Math.floor(n.r))} · {n.d} downloads</p>
                   </div>
                   <button className="text-[10px] font-sans font-bold px-3 py-1.5 rounded-lg transition-all" style={{background:'rgba(96,165,250,0.1)',color:'#60a5fa',border:'1px solid rgba(96,165,250,0.2)'}}>+ PDF</button>
                 </div>
@@ -532,9 +532,9 @@ const Dashboard = () => {
               <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white">Flashcard deck</h3>
               <span className="badge" style={{background:'rgba(167,139,250,0.15)',color:'#a78bfa',border:'1px solid rgba(167,139,250,0.3)',fontSize:'10px'}}>OS Exam prep</span>
             </div>
-            <p className="text-xs font-sans text-slate-900/ dark:text-white/ mb-4">Card 7 of 24 · LRU Algorithm</p>
-            <div className="glass-card p-6 text-center mb-6 bg-slate-900/ dark:bg-white/">
-              <p className="text-sm font-sans text-slate-900/ dark:text-white/ mb-3">What does LRU stand for and when is it used?</p>
+            <p className="text-xs font-sans text-slate-900/50 dark:text-white/50 mb-4">Card 7 of 24 · LRU Algorithm</p>
+            <div className="glass-card p-6 text-center mb-6 bg-slate-900/5 dark:bg-white/5">
+              <p className="text-sm font-sans text-slate-900/50 dark:text-white/50 mb-3">What does LRU stand for and when is it used?</p>
               <p className="text-base font-heading font-bold text-crimson-rose">Least Recently Used — page replacement algorithm that removes the page not used for the longest time.</p>
             </div>
             <div className="flex justify-center gap-3 mb-6">
@@ -542,7 +542,7 @@ const Dashboard = () => {
                 <button key={l} className="flex-1 py-2.5 rounded-xl text-[11px] font-sans font-bold transition-all hover:scale-105" style={{background:['rgba(248,113,113,0.1)','rgba(251,191,36,0.1)','rgba(52,211,153,0.1)'][i],color:['#f87171','#fbbf24','#34d399'][i],border:`1px solid ${['rgba(248,113,113,0.2)','rgba(251,191,36,0.2)','rgba(52,211,153,0.2)'][i]}`}}>{l}</button>
               ))}
             </div>
-            <div className="flex items-center justify-between text-[11px] font-sans text-slate-900/ dark:text-white/ px-1">
+            <div className="flex items-center justify-between text-[11px] font-sans text-slate-900/50 dark:text-white/50 px-1">
               <span className="text-blue-400 font-medium">6 mastered</span><span className="text-amber-400 font-medium">1 review</span><span className="font-medium">17 remaining</span>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
             </div>
@@ -561,8 +561,8 @@ const Dashboard = () => {
               <div key={i} className="flex items-start gap-3">
                 <Circle size={10} className="mt-1.5 flex-shrink-0" style={{color:c.c, filter:`drop-shadow(0 0 5px ${c.c}40)`}}/>
                 <div>
-                  <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{c.t}</p>
-                  <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{c.s} · {c.d}</p>
+                  <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{c.t}</p>
+                  <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-0.5">{c.s} · {c.d}</p>
                 </div>
               </div>
             ))}
@@ -607,7 +607,7 @@ const Dashboard = () => {
                 <p className="text-[11px] font-sans mb-1" style={{ color: 'var(--fg-color)', opacity: 0.7 }}>{h.h}</p>
                 <div className="flex items-center gap-1">
                   {['M','T','W','T','F','S','S'].map((d,j)=>(
-                    <div key={j} className="w-5 h-5 rounded text-[9px] font-sans flex items-center justify-center border transition-colors" style={{background:h.s[j]?'rgba(52,211,153,0.15)':'rgba(255,255,255,0.02)',color:h.s[j]?'#34d399':'var(--text-muted)',borderColor:h.s[j]?'rgba(52,211,153,0.3)':'var(--card-border)'}}>{d}</div>
+                    <div key={j} className="w-5 h-5 rounded text-[9px] font-sans flex items-center justify-center border transition-colors" style={{background:h.s[j]?'rgba(52,211,153,0.15)':'var(--card-border)',color:h.s[j]?'#34d399':'var(--text-muted)',borderColor:h.s[j]?'rgba(52,211,153,0.3)':'var(--card-border)'}}>{d}</div>
                   ))}
                   <span className="text-[10px] font-sans text-amber-400 ml-1">🔥{h.st}</span>
                 </div>
@@ -708,15 +708,15 @@ const Dashboard = () => {
               <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white">Budget</h3>
               <button className="text-[11px] font-sans text-blue-400 hover:underline">April →</button>
             </div>
-            <div className="mb-4"><span className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹4,280</span><span className="text-sm font-sans text-slate-900/ dark:text-white/"> / ₹6,000</span></div>
-            <div className="w-full h-2.5 rounded-full mb-5 overflow-hidden" style={{background:'rgba(255,255,255,0.06)'}}>
+            <div className="mb-4"><span className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹4,280</span><span className="text-sm font-sans text-slate-900/50 dark:text-white/50"> / ₹6,000</span></div>
+            <div className="w-full h-2.5 rounded-full mb-5 overflow-hidden" style={{background:'var(--card-border)'}}>
               <motion.div className="h-full rounded-full" style={{background:'linear-gradient(90deg,#60a5fa,#a78bfa)'}} initial={{width:'0%'}} animate={{width:'71%'}} transition={{delay:0.8,duration:1}}/>
             </div>
             <div className="space-y-3">
               {[{c:'Food',a:'₹1,840',col:'#fb923c'},{c:'Transport',a:'₹960',col:'#60a5fa'},{c:'Books',a:'₹620',col:'#a78bfa'},{c:'Others',a:'₹860',col:'#fbbf24'}].map((e,i)=>(
                 <div key={i} className="flex items-center justify-between py-1">
-                  <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full shadow-lg" style={{background:e.col, boxShadow:`0 0 8px ${e.col}60`}}/><span className="text-xs font-sans text-slate-900/ dark:text-white/">{e.c}</span></div>
-                  <span className="text-xs font-sans font-bold text-slate-900/ dark:text-white/">{e.a}</span>
+                  <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full shadow-lg" style={{background:e.col, boxShadow:`0 0 8px ${e.col}60`}}/><span className="text-xs font-sans text-slate-900/50 dark:text-white/50">{e.c}</span></div>
+                  <span className="text-xs font-sans font-bold text-slate-900/50 dark:text-white/50">{e.a}</span>
                 </div>
               ))}
             </div>
@@ -730,10 +730,10 @@ const Dashboard = () => {
             <div className="space-y-5">
               {[{h:'Morning revision',s:[1,1,1,1,1,1,0],st:6},{h:'Exercise 30 min',s:[1,0,1,0,1,0,0],st:3},{h:'Read 20 pages',s:[1,1,1,1,0,1,0],st:5},{h:'No social media before 10am',s:[1,1,1,1,1,1,1],st:7}].map((h,i)=>(
                 <div key={i} className="space-y-2">
-                  <p className="text-xs font-sans font-medium text-slate-900/ dark:text-white/">{h.h}</p>
+                  <p className="text-xs font-sans font-medium text-slate-900/50 dark:text-white/50">{h.h}</p>
                   <div className="flex items-center gap-1.5">
                     {['M','T','W','T','F','S','S'].map((d,j)=>(
-                      <div key={j} className="w-6 h-6 rounded-lg text-[10px] font-sans font-bold flex items-center justify-center transition-all" style={{background:h.s[j]?'rgba(52,211,153,0.15)':'rgba(255,255,255,0.03)',color:h.s[j]?'#34d399':'rgba(255,255,255,0.2)',border:h.s[j]?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{d}</div>
+                      <div key={j} className="w-6 h-6 rounded-lg text-[10px] font-sans font-bold flex items-center justify-center transition-all" style={{background:h.s[j]?'rgba(52,211,153,0.15)':'var(--card-border)',color:h.s[j]?'#34d399':'var(--text-muted)',border:h.s[j]?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{d}</div>
                     ))}
                     <span className="text-[11px] font-sans font-bold text-amber-400 ml-1">🔥{h.st}</span>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
@@ -757,7 +757,7 @@ const Dashboard = () => {
           </div>
           <div className="glass-card p-6">
             <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white mb-4">Wellbeing check</h3>
-            <p className="text-xs font-sans text-slate-900/ dark:text-white/ mb-3">How are you feeling today?</p>
+            <p className="text-xs font-sans text-slate-900/50 dark:text-white/50 mb-3">How are you feeling today?</p>
             <div className="flex gap-2 mb-2 justify-between">
               {[
                 {e:'😞', n:'Down'},
@@ -767,18 +767,18 @@ const Dashboard = () => {
                 {e:'🤩', n:'Awesome'}
               ].map((m,i)=>(
                 <div key={i} className="flex flex-col items-center gap-2">
-                  <button className="w-10 h-10 rounded-2xl text-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-slate-900/ dark:bg-white/" style={{background:i===3?'rgba(52,211,153,0.15)':'rgba(255,255,255,0.03)',border:i===3?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{m.e}</button>
-                  <span className="text-[9px] font-sans text-slate-900/ dark:text-white/ font-bold uppercase tracking-tighter">{m.n}</span>
+                  <button className="w-10 h-10 rounded-2xl text-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-slate-900/ dark:hover:bg-white/" style={{background:i===3?'rgba(52,211,153,0.15)':'var(--card-border)',border:i===3?'1px solid rgba(52,211,153,0.2)':'1px solid transparent'}}>{m.e}</button>
+                  <span className="text-[9px] font-sans text-slate-900/50 dark:text-white/50 font-bold uppercase tracking-tighter">{m.n}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[11px] font-sans font-bold text-slate-900/ dark:text-white/ mb-3 mt-6">This week's mood</p>
+            <p className="text-[11px] font-sans font-bold text-slate-900/50 dark:text-white/50 mb-3 mt-6">This week's mood</p>
             <div className="flex gap-2 mb-4">
               {['M','T','W','T','F'].map((d,i)=>(
                 <div key={i} className="w-8 h-8 rounded-xl text-[10px] font-sans font-bold flex items-center justify-center" style={{background:['rgba(52,211,153,0.15)','rgba(52,211,153,0.15)','rgba(251,191,36,0.15)','rgba(52,211,153,0.15)','rgba(96,165,250,0.15)'][i],color:['#34d399','#34d399','#fbbf24','#34d399','#60a5fa'][i]}}>{d}</div>
               ))}
             </div>
-            <div className="glass-card p-4 text-xs font-sans text-slate-900/ dark:text-white/ leading-relaxed border-glow">Tip: You've had a good week! Remember to take a 10-min break every hour. Staying hydrated boosts focus by 15%.</div>
+            <div className="glass-card p-4 text-xs font-sans text-slate-900/50 dark:text-white/50 leading-relaxed border-glow">Tip: You've had a good week! Remember to take a 10-min break every hour. Staying hydrated boosts focus by 15%.</div>
           </div>
         </div>
 
@@ -791,13 +791,13 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{t:'Engineering Maths Vol 2',d:'Good condition · CSE',p:'₹180',c:'#34d399'},{t:'Logitech Wireless Mouse',d:'Like new',p:'₹420',c:'#60a5fa'},{t:'Drafter + Set squares',d:'Used · Civil Dept',p:'₹95',c:'#fbbf24'}].map((l,i)=>(
-                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-3.5 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{background:`${l.c}10`, border:`1px solid ${l.c}20`}}>
                     <ShoppingBag size={18} style={{color:l.c}}/>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{l.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{l.d}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{l.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-0.5">{l.d}</p>
                   </div>
                   <span className="text-sm font-heading font-bold text-slate-900 dark:text-white">{l.p}</span>
                 </div>
@@ -812,14 +812,14 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{d:'28',m:'APR',t:'Hackathon 2026 — Registration',l:'Main Auditorium · 10:00 AM',tag:'Tech',tc:'#60a5fa'},{d:'30',m:'APR',t:'Cultural Fest — Music Night',l:'Open Ground · 6:00 PM',tag:'Culture',tc:'#a78bfa'},{d:'2',m:'MAY',t:'Alumni Talk — Career in AI/ML',l:'Seminar Hall · 11:00 AM',tag:'Career',tc:'#34d399'}].map((e,i)=>(
-                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-4 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <div className="w-12 h-12 rounded-2xl flex flex-col items-center justify-center text-center flex-shrink-0" style={{background:'rgba(96,165,250,0.08)',border:'1px solid rgba(96,165,250,0.15)'}}>
                     <span className="text-sm font-sans font-bold text-blue-400">{e.d}</span>
                     <span className="text-[8px] font-sans font-bold text-blue-400/60">{e.m}</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/ leading-tight">{e.t}</p>
-                    <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ mt-1">{e.l}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50 leading-tight">{e.t}</p>
+                    <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 mt-1">{e.l}</p>
                     <span className="text-[9px] font-sans font-bold px-2.5 py-1 rounded-full mt-2 inline-block uppercase tracking-wider" style={{background:`${e.tc}10`,color:e.tc, border:`1px solid ${e.tc}20`}}>{e.tag}</span>
                   </div>
                 </div>
@@ -833,11 +833,11 @@ const Dashboard = () => {
             </div>
             <div className="space-y-1">
               {[{t:'Blue Casio FX-991 calculator',l:'Library · 24 Apr · Reward ₹50',tp:'LOST',c:'#f87171'},{t:'Black wallet near Canteen B',l:'Canteen B · 25 Apr',tp:'FOUND',c:'#34d399'},{t:'Dell 65W laptop charger',l:'Lab 302 · 25 Apr',tp:'LOST',c:'#f87171'},{t:'ID Card — Priya Sharma',l:'Main Gate · 26 Apr',tp:'FOUND',c:'#34d399'}].map((l,i)=>(
-                <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/ dark:border-white/ last:border-0">
+                <div key={i} className="flex items-center gap-4 py-3 border-b border-slate-900/10 dark:border-white/10 last:border-0">
                   <span className="text-[9px] font-sans font-bold px-2 py-1 rounded-lg flex-shrink-0" style={{background:`${l.c}10`,color:l.c,border:`1px solid ${l.c}20`}}>{l.tp}</span>
                   <div className="flex-1">
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/ leading-tight">{l.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-1">{l.l}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50 leading-tight">{l.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-1">{l.l}</p>
                   </div>
                 </div>
               ))}
@@ -857,8 +857,8 @@ const Dashboard = () => {
                 <div key={i} className="flex items-start gap-3">
                   <Circle size={10} className="mt-1.5 flex-shrink-0" style={{color:c.c, filter:`drop-shadow(0 0 5px ${c.c}40)`}}/>
                   <div>
-                    <p className="text-sm font-sans font-medium text-slate-900/ dark:text-white/">{c.t}</p>
-                    <p className="text-[11px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{c.s} · {c.d}</p>
+                    <p className="text-sm font-sans font-medium text-slate-900/50 dark:text-white/50">{c.t}</p>
+                    <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50 mt-0.5">{c.s} · {c.d}</p>
                   </div>
                 </div>
               ))}
@@ -869,11 +869,11 @@ const Dashboard = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white flex items-center justify-center md:justify-start gap-3 mb-2"><Crown size={24} className="text-amber-400"/>Unlock Premium</h3>
-                <p className="text-sm font-sans text-slate-900/ dark:text-white/ leading-relaxed">Unlimited AI queries · Advanced analytics · Priority complaints · Ad-free marketplace · Exclusive notes</p>
+                <p className="text-sm font-sans text-slate-900/50 dark:text-white/50 leading-relaxed">Unlimited AI queries · Advanced analytics · Priority complaints · Ad-free marketplace · Exclusive notes</p>
               </div>
               <div className="text-center md:text-right shrink-0">
-                <p className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹99<span className="text-sm text-slate-900/ dark:text-white/">/mo</span></p>
-                <p className="text-xs font-sans text-slate-900/ dark:text-white/ mt-1 font-bold">or ₹799/yr</p>
+                <p className="text-3xl font-heading font-bold text-slate-900 dark:text-white">₹99<span className="text-sm text-slate-900/50 dark:text-white/50">/mo</span></p>
+                <p className="text-xs font-sans text-slate-900/50 dark:text-white/50 mt-1 font-bold">or ₹799/yr</p>
                 <button className="btn-primary mt-4 w-full">Upgrade Now</button>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
               </div>

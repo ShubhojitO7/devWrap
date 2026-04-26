@@ -94,11 +94,11 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
 =======
         background: 'rgba(6, 11, 20, 0.98)',
         backdropFilter: 'blur(30px)',
-        borderRight: '1px solid rgba(255,255,255,0.06)',
+        borderRight: '1px solid var(--card-border)',
       }}
     >
       {/* Logo */}
-      <div className="flex items-center justify-between px-4 py-5 border-b border-slate-900/ dark:border-white/">
+      <div className="flex items-center justify-between px-4 py-5 border-b border-slate-900/10 dark:border-white/10">
         <div className="flex items-center gap-3">
           <motion.div
             className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -122,7 +122,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
           </AnimatePresence>
         </div>
         {isMobile && (
-          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-slate-900/ dark:bg-white/ text-slate-900/ dark:text-white/">
+          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-slate-900/5 dark:bg-white/5 text-slate-900/50 dark:text-white/50">
             <ChevronLeft size={16} />
           </button>
         )}
@@ -228,7 +228,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
               <p className="text-[10px] font-sans" style={{ color: 'var(--text-muted)' }}>
                 7 / 10 — Upgrade for unlimited
 =======
-              <p className="text-[10px] font-sans" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              <p className="text-[10px] font-sans" style={{ color: 'var(--text-muted)' }}>
                 7 / 10 — <NavLink to="/premium" className="text-crimson-rose hover:underline">Upgrade for unlimited</NavLink>
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
               </p>
@@ -260,7 +260,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
             borderColor: 'rgba(255,255,255,0.15)',
           }}
         >
-          {collapsed ? <ChevronRight size={12} className="text-slate-900/ dark:text-white/" /> : <ChevronLeft size={12} className="text-slate-900/ dark:text-white/" />}
+          {collapsed ? <ChevronRight size={12} className="text-slate-900/50 dark:text-white/50" /> : <ChevronLeft size={12} className="text-slate-900/50 dark:text-white/50" />}
         </button>
       )}
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd

@@ -138,11 +138,11 @@ const AIAssistant = () => {
                   </div>
                 )}
                 <div 
-                  className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm font-sans ${m.role === 'user' ? 'text-slate-900 dark:text-white' : 'text-slate-900/ dark:text-white/'}`} 
+                  className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm font-sans ${m.role === 'user' ? 'text-slate-900 dark:text-white' : 'text-slate-900/50 dark:text-white/50'}`} 
                   style={{
-                    background: m.role === 'user' ? 'linear-gradient(135deg,#D1495B,#b83a4a)' : 'rgba(255,255,255,0.06)',
+                    background: m.role === 'user' ? 'linear-gradient(135deg,#D1495B,#b83a4a)' : 'var(--card-border)',
                     boxShadow: m.role === 'user' ? '0 4px 15px rgba(209,73,91,0.2)' : 'none',
-                    border: m.role === 'assistant' ? '1px solid rgba(255,255,255,0.05)' : 'none'
+                    border: m.role === 'assistant' ? '1px solid var(--card-border)' : 'none'
                   }}
                 >
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
@@ -152,14 +152,14 @@ const AIAssistant = () => {
             ))}
             {loading && (
               <motion.div className="flex gap-3" initial={{opacity:0}} animate={{opacity:1}}>
-                <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{background:'rgba(255,255,255,0.05)'}}>
-                  <Loader2 size={14} className="text-slate-900/ dark:text-white/ animate-spin"/>
+                <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{background:'var(--card-border)'}}>
+                  <Loader2 size={14} className="text-slate-900/50 dark:text-white/50 animate-spin"/>
                 </div>
-                <div className="px-4 py-3 rounded-2xl bg-slate-900/ dark:bg-white/ border border-slate-900/ dark:border-white/">
+                <div className="px-4 py-3 rounded-2xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10">
                   <div className="flex gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/ dark:bg-white/ animate-bounce" style={{animationDelay:'0ms'}}/>
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/ dark:bg-white/ animate-bounce" style={{animationDelay:'150ms'}}/>
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/ dark:bg-white/ animate-bounce" style={{animationDelay:'300ms'}}/>
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/5 dark:bg-white/5 animate-bounce" style={{animationDelay:'0ms'}}/>
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/5 dark:bg-white/5 animate-bounce" style={{animationDelay:'150ms'}}/>
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-900/5 dark:bg-white/5 animate-bounce" style={{animationDelay:'300ms'}}/>
                   </div>
                 </div>
               </motion.div>
@@ -168,9 +168,9 @@ const AIAssistant = () => {
           </div>
 <<<<<<< HEAD
 
-          <div className="flex gap-2 bg-slate-900/ dark:bg-white/ p-2 rounded-2xl border border-slate-900/ dark:border-white/">
-            <button className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-slate-900/ dark:bg-white/" title="Upload PDF">
-              <Upload size={18} className="text-slate-900/ dark:text-white/"/>
+          <div className="flex gap-2 bg-slate-900/5 dark:bg-white/5 p-2 rounded-2xl border border-slate-900/10 dark:border-white/10">
+            <button className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-slate-900/ dark:hover:bg-white/" title="Upload PDF">
+              <Upload size={18} className="text-slate-900/50 dark:text-white/50"/>
             </button>
             <input 
               className="bg-transparent border-none outline-none flex-1 text-slate-900 dark:text-white text-sm font-sans px-2" 
@@ -181,7 +181,7 @@ const AIAssistant = () => {
               disabled={loading}
             />
             <button 
-              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${input.trim() ? 'bg-crimson-rose text-slate-900 dark:text-white scale-100' : 'bg-slate-900/ dark:bg-white/ text-slate-900/ dark:text-white/ scale-95'}`} 
+              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${input.trim() ? 'bg-crimson-rose text-slate-900 dark:text-white scale-100' : 'bg-slate-900/5 dark:bg-white/5 text-slate-900/50 dark:text-white/50 scale-95'}`} 
               onClick={handleSend}
               disabled={!input.trim() || loading}
             >
@@ -189,7 +189,7 @@ const AIAssistant = () => {
 =======
           <div className="flex gap-2">
 <<<<<<< HEAD
-            <button className="w-10 h-10 rounded-xl flex items-center justify-center border transition-colors hover:bg-slate-900/ dark:bg-white/" style={{background:'var(--card-bg)',borderColor:'var(--card-border)'}}>
+            <button className="w-10 h-10 rounded-xl flex items-center justify-center border transition-colors hover:bg-slate-900/ dark:hover:bg-white/" style={{background:'var(--card-bg)',borderColor:'var(--card-border)'}}>
               <Upload size={16} style={{ color: 'var(--text-muted)' }}/>
             </button>
             <input className="input-glass flex-1" placeholder="Ask anything about your subjects..." value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleSend()}/>
@@ -198,7 +198,7 @@ const AIAssistant = () => {
         </div>
         <div className="text-center text-[11px] font-sans" style={{ color: 'var(--text-muted)' }}>7 / 10 free queries used today · Upgrade to Premium for unlimited</div>
 =======
-            <button className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)'}}><Upload size={16} className="text-slate-900/ dark:text-white/"/></button>
+            <button className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background:'var(--card-border)',border:'1px solid var(--text-muted)'}}><Upload size={16} className="text-slate-900/50 dark:text-white/50"/></button>
             <input className="input-glass flex-1" placeholder="Ask anything about your subjects..." value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleSend()} disabled={isLoading} />
             <button className="btn-primary px-4" onClick={handleSend} disabled={isLoading}>
               {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16}/>}
@@ -208,7 +208,7 @@ const AIAssistant = () => {
         </div>
         
         <div className="flex items-center justify-between px-2">
-          <p className="text-[11px] font-sans text-slate-900/ dark:text-white/">
+          <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50">
             {user?.aiQueriesUsed || 0} / 10 free queries used today
           </p>
           <button className="text-[11px] font-sans font-bold text-amber-400 hover:underline">

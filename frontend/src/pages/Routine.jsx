@@ -38,7 +38,7 @@ const Routine = () => (
                 <p className="text-[11px] font-sans text-[var(--text-muted)] flex items-center gap-1.5"><Calendar size={10}/>{e.d}</p>
                 <p className="text-[11px] font-sans text-[var(--text-muted)] flex items-center gap-1.5"><Clock size={10}/>{e.t} · {e.r}</p>
               </div>
-              <div className="mt-3 w-full h-1.5 rounded-full" style={{background:'rgba(255,255,255,0.06)'}}>
+              <div className="mt-3 w-full h-1.5 rounded-full" style={{background:'var(--card-border)'}}>
                 <motion.div className="h-full rounded-full" style={{background:e.c}} initial={{width:'0%'}} animate={{width:`${Math.max(10,100-e.days*4)}%`}} transition={{delay:0.5+i*0.1,duration:0.8}}/>
               </div>
               <p className="text-[10px] font-sans text-[var(--text-muted)] opacity-80 mt-1">Preparation: {Math.max(10,100-e.days*4)}%</p>

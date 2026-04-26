@@ -62,7 +62,7 @@ const Habits = () => {
         <div className="flex items-center justify-between px-2">
           <div>
             <h1 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Habit Tracker</h1>
-            <p className="text-base font-sans text-slate-900/ dark:text-white/ mt-1">Consistency is the key to mastery.</p>
+            <p className="text-base font-sans text-slate-900/50 dark:text-white/50 mt-1">Consistency is the key to mastery.</p>
           </div>
           <button onClick={handleAddHabit} className="btn-primary flex items-center gap-2">
             <Plus size={20}/> New Habit
@@ -77,11 +77,11 @@ const Habits = () => {
                 <TrendingUp size={20}/>
               </div>
               <div>
-                <p className="text-[11px] font-sans text-slate-900/ dark:text-white/">Weekly Success Rate</p>
+                <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50">Weekly Success Rate</p>
                 <p className="text-xl font-heading font-bold text-slate-900 dark:text-white">78%</p>
               </div>
             </div>
-            <div className="w-full h-1.5 bg-slate-900/ dark:bg-white/ rounded-full mt-3">
+            <div className="w-full h-1.5 bg-slate-900/5 dark:bg-white/5 rounded-full mt-3">
               <motion.div className="h-full bg-emerald-400 rounded-full" initial={{width:0}} animate={{width:'78%'}} transition={{duration:1}}/>
             </div>
           </div>
@@ -91,11 +91,11 @@ const Habits = () => {
                 <Flame size={20}/>
               </div>
               <div>
-                <p className="text-[11px] font-sans text-slate-900/ dark:text-white/">Longest Streak</p>
+                <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50">Longest Streak</p>
                 <p className="text-xl font-heading font-bold text-slate-900 dark:text-white">12 Days</p>
               </div>
             </div>
-            <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ mt-3">Keep it up! You're in the top 5% of students.</p>
+            <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 mt-3">Keep it up! You're in the top 5% of students.</p>
           </div>
           <div className="glass-card p-5">
             <div className="flex items-center gap-3 mb-2">
@@ -103,7 +103,7 @@ const Habits = () => {
                 <Award size={20}/>
               </div>
               <div>
-                <p className="text-[11px] font-sans text-slate-900/ dark:text-white/">Monthly Badges</p>
+                <p className="text-[11px] font-sans text-slate-900/50 dark:text-white/50">Monthly Badges</p>
                 <p className="text-xl font-heading font-bold text-slate-900 dark:text-white">4 Earned</p>
               </div>
             </div>
@@ -118,8 +118,8 @@ const Habits = () => {
           <div className="flex items-center justify-between px-2">
             <h2 className="text-sm font-heading font-bold text-slate-900 dark:text-white uppercase tracking-wider">Active Habits</h2>
             <div className="flex gap-4">
-              {days.map(d => <span key={d} className="w-10 text-center text-[10px] font-sans text-slate-900/ dark:text-white/">{d}</span>)}
-              <span className="w-12 text-center text-[10px] font-sans text-slate-900/ dark:text-white/">Streak</span>
+              {days.map(d => <span key={d} className="w-10 text-center text-[10px] font-sans text-slate-900/50 dark:text-white/50">{d}</span>)}
+              <span className="w-12 text-center text-[10px] font-sans text-slate-900/50 dark:text-white/50">Streak</span>
             </div>
           </div>
 
@@ -134,8 +134,8 @@ const Habits = () => {
               <div className="flex items-center gap-4">
                 <div className="w-2 h-10 rounded-full" style={{background: h.color}}/>
                 <div>
-                  <h3 className="text-sm font-sans font-semibold text-slate-900/ dark:text-white/">{h.name}</h3>
-                  <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ flex items-center gap-1">
+                  <h3 className="text-sm font-sans font-semibold text-slate-900/50 dark:text-white/50">{h.name}</h3>
+                  <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 flex items-center gap-1">
                     <Target size={10}/> {h.goal}
                   </p>
                 </div>
@@ -149,9 +149,9 @@ const Habits = () => {
                       onClick={() => toggleHabit(h.id, j)}
                       className="w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105"
                       style={{
-                        background: status ? `${h.color}15` : 'rgba(255,255,255,0.03)',
-                        border: `1px solid ${status ? `${h.color}30` : 'rgba(255,255,255,0.05)'}`,
-                        color: status ? h.color : 'rgba(255,255,255,0.1)'
+                        background: status ? `${h.color}15` : 'var(--card-border)',
+                        border: `1px solid ${status ? `${h.color}30` : 'var(--card-border)'}`,
+                        color: status ? h.color : 'var(--text-muted)'
                       }}
                     >
                       {status ? <CheckCircle2 size={16}/> : <Circle size={16}/>}
@@ -175,10 +175,10 @@ const Habits = () => {
               <Calendar size={16} className="text-blue-400"/> Productivity Insights
             </h3>
             <div className="space-y-3">
-              <div className="p-3 rounded-xl bg-slate-900/ dark:bg-white/ border border-slate-900/ dark:border-white/ text-xs font-sans text-slate-900/ dark:text-white/">
+              <div className="p-3 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 text-xs font-sans text-slate-900/50 dark:text-white/50">
                 You are most consistent with <b className="text-slate-900 dark:text-white">Morning revision</b>. You've completed it 14 days in a row!
               </div>
-              <div className="p-3 rounded-xl bg-slate-900/ dark:bg-white/ border border-slate-900/ dark:border-white/ text-xs font-sans text-slate-900/ dark:text-white/">
+              <div className="p-3 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 text-xs font-sans text-slate-900/50 dark:text-white/50">
                 Consistency dropped on <b className="text-slate-900 dark:text-white">Sundays</b>. Try setting a smaller goal for weekends.
               </div>
             </div>
@@ -187,7 +187,7 @@ const Habits = () => {
             <h3 className="text-sm font-heading font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
               <Target size={16} className="text-crimson-rose"/> Smart Suggestion
             </h3>
-            <p className="text-xs font-sans text-slate-900/ dark:text-white/ leading-relaxed mb-4">
+            <p className="text-xs font-sans text-slate-900/50 dark:text-white/50 leading-relaxed mb-4">
               Based on your schedule, you have a gap between 4pm and 5pm. This is a great time to tackle your <b className="text-slate-900 dark:text-white">Exercise 30 min</b> habit.
             </p>
             <button className="text-[11px] font-sans font-bold text-crimson-rose hover:underline">Set reminder for 4:00 PM →</button>

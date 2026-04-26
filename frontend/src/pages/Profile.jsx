@@ -68,21 +68,21 @@ const Profile = () => {
                 <h2 className="text-2xl font-heading font-bold text-slate-900 dark:text-white">{user.name}</h2>
                 <span className="badge" style={{background:'rgba(52,211,153,0.15)',color:'#34d399',border:'1px solid rgba(52,211,153,0.3)',fontSize:'10px'}}>PRO MEMBER</span>
               </div>
-              <p className="text-sm font-sans text-slate-900/ dark:text-white/ mb-4">{user.email} · Student ID: #SW-2024-9102</p>
+              <p className="text-sm font-sans text-slate-900/50 dark:text-white/50 mb-4">{user.email} · Student ID: #SW-2024-9102</p>
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <div className="text-center md:text-left">
                   <p className="text-lg font-heading font-bold text-slate-900 dark:text-white">124</p>
-                  <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ uppercase tracking-wider">Notes Shared</p>
+                  <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 uppercase tracking-wider">Notes Shared</p>
                 </div>
-                <div className="w-px h-8 bg-slate-900/ dark:bg-white/ hidden md:block"/>
+                <div className="w-px h-8 bg-slate-900/5 dark:bg-white/5 hidden md:block"/>
                 <div className="text-center md:text-left">
                   <p className="text-lg font-heading font-bold text-slate-900 dark:text-white">4.9</p>
-                  <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ uppercase tracking-wider">Avg Rating</p>
+                  <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 uppercase tracking-wider">Avg Rating</p>
                 </div>
-                <div className="w-px h-8 bg-slate-900/ dark:bg-white/ hidden md:block"/>
+                <div className="w-px h-8 bg-slate-900/5 dark:bg-white/5 hidden md:block"/>
                 <div className="text-center md:text-left">
                   <p className="text-lg font-heading font-bold text-slate-900 dark:text-white">2.4k</p>
-                  <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ uppercase tracking-wider">Downloads</p>
+                  <p className="text-[10px] font-sans text-slate-900/50 dark:text-white/50 uppercase tracking-wider">Downloads</p>
                 </div>
               </div>
             </div>
@@ -96,15 +96,15 @@ const Profile = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {sections.map((section, idx) => (
             <div key={idx} className="glass-card p-6">
-              <h3 className="text-sm font-heading font-bold text-slate-900/ dark:text-white/ mb-4 uppercase tracking-widest text-xs">{section.title}</h3>
+              <h3 className="text-sm font-heading font-bold text-slate-900/50 dark:text-white/50 mb-4 uppercase tracking-widest text-xs">{section.title}</h3>
               <div className="space-y-4">
                 {section.items.map((item, i) => (
-                  <div key={i} className="flex items-center justify-between py-2 border-b border-slate-900/ dark:border-white/ last:border-0">
-                    <div className="flex items-center gap-3 text-slate-900/ dark:text-white/">
+                  <div key={i} className="flex items-center justify-between py-2 border-b border-slate-900/10 dark:border-white/10 last:border-0">
+                    <div className="flex items-center gap-3 text-slate-900/50 dark:text-white/50">
                       {item.icon}
                       <span className="text-xs font-sans">{item.label}</span>
                     </div>
-                    <span className="text-sm font-sans text-slate-900/ dark:text-white/" style={item.color ? {color: item.color} : {}}>{item.value}</span>
+                    <span className="text-sm font-sans text-slate-900/50 dark:text-white/50" style={item.color ? {color: item.color} : {}}>{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -123,14 +123,14 @@ const Profile = () => {
           ].map((item, i) => (
             <motion.div 
               key={i} 
-              className="glass-card p-4 text-center cursor-pointer hover:bg-slate-900/ dark:bg-white/ transition-all"
+              className="glass-card p-4 text-center cursor-pointer hover:bg-slate-900/ dark:hover:bg-white/ transition-all"
               whileHover={{ y: -4 }}
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style={{background: `${item.color}15`, color: item.color}}>
                 {item.icon}
               </div>
               <p className="text-xs font-sans font-bold text-slate-900 dark:text-white mb-1">{item.label}</p>
-              <p className="text-[9px] font-sans text-slate-900/ dark:text-white/">{item.desc}</p>
+              <p className="text-[9px] font-sans text-slate-900/50 dark:text-white/50">{item.desc}</p>
             </motion.div>
           ))}
         </div>

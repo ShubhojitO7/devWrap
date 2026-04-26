@@ -53,14 +53,14 @@ const Register = () => {
             <Bot size={32} className="text-slate-900 dark:text-white" />
           </div>
           <h1 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Join StudyNest</h1>
-          <p className="text-slate-900/ dark:text-white/ font-sans mt-2">Create your student profile to get started</p>
+          <p className="text-slate-900/50 dark:text-white/50 font-sans mt-2">Create your student profile to get started</p>
         </div>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Full Name</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">Full Name</label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" size={18} />
               <input
                 type="text"
                 name="name"
@@ -74,9 +74,9 @@ const Register = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Email Address</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">Email Address</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" size={18} />
               <input
                 type="email"
                 name="email"
@@ -90,9 +90,9 @@ const Register = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Password</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" size={18} />
               <input
                 type="password"
                 name="password"
@@ -106,9 +106,9 @@ const Register = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">College/University</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">College/University</label>
             <div className="relative">
-              <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
+              <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" size={18} />
               <input
                 type="text"
                 name="college"
@@ -122,9 +122,9 @@ const Register = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Branch/Stream</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">Branch/Stream</label>
             <div className="relative">
-              <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
+              <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/50 dark:text-white/50" size={18} />
               <input
                 type="text"
                 name="branch"
@@ -138,7 +138,7 @@ const Register = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Current Semester</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/50 dark:text-white/50 ml-1">Current Semester</label>
             <select
               name="semester"
               value={formData.semester}
@@ -168,8 +168,8 @@ const Register = () => {
           </div>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-slate-900/ dark:border-white/ text-center">
-          <p className="text-sm font-sans text-slate-900/ dark:text-white/">
+        <div className="mt-8 pt-6 border-t border-slate-900/10 dark:border-white/10 text-center">
+          <p className="text-sm font-sans text-slate-900/50 dark:text-white/50">
             Already have an account?{' '}
             <Link to="/login" className="text-blue-400 hover:underline font-semibold">Sign in instead</Link>
           </p>

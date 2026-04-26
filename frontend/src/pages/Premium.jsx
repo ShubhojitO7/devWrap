@@ -57,7 +57,7 @@ const Premium = () => (
             <div className="space-y-2.5 my-5">
               {p.features.map((f,j)=>(
                 <div key={j} className="flex items-center gap-2">
-                  {f.v ? <Check size={14} className="text-emerald-400"/> : <X size={14} className="text-slate-900/ dark:text-white/"/>}
+                  {f.v ? <Check size={14} className="text-emerald-400"/> : <X size={14} className="text-slate-900/50 dark:text-white/50"/>}
                   <span className={`text-xs font-sans ${f.v?'text-[var(--fg-color)] opacity-70':'text-[var(--text-muted)] opacity-80'}`}>{f.t}</span>
 =======
 const Premium = () => {
