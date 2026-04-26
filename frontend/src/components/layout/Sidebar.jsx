@@ -42,91 +42,51 @@ const menuSections = [
   },
 ];
 
-<<<<<<< HEAD
-const Sidebar = ({ collapsed, setCollapsed, mobileOpen, setMobileOpen }) => {
-=======
 const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
->>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
   const location = useLocation();
 
   return (
     <motion.aside
-<<<<<<< HEAD
-      className={`fixed left-0 top-0 bottom-0 z-40 flex flex-col transition-transform lg:transition-none ${
-        mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      }`}
-=======
       className={`fixed left-0 top-0 bottom-0 z-40 flex flex-col ${isMobile ? 'w-64' : ''}`}
->>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
       initial={false}
       animate={{ width: isMobile ? 256 : (collapsed ? 72 : 240) }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       style={{
-<<<<<<< HEAD
         background: 'var(--sidebar-bg)',
-        backdropFilter: 'blur(20px)',
+        backdropFilter: 'blur(30px)',
         borderRight: '1px solid var(--sidebar-border)',
       }}
     >
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b" style={{ borderColor: 'var(--card-border)' }}>
-        <motion.div
-          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
-        </motion.div>
-        <AnimatePresence>
-          {!collapsed && (
-            <motion.span
-              className="text-lg font-heading font-bold whitespace-nowrap"
-              style={{ color: 'var(--fg-color)' }}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              Study<span className="text-[#D1495B]">Nest</span>
-            </motion.span>
-          )}
-        </AnimatePresence>
-=======
-        background: 'rgba(6, 11, 20, 0.98)',
-        backdropFilter: 'blur(30px)',
-        borderRight: '1px solid var(--card-border)',
-      }}
-    >
-      {/* Logo */}
-      <div className="flex items-center justify-between px-4 py-5 border-b border-slate-900/10 dark:border-white/10">
+      <div className="flex items-center justify-between px-4 py-5 border-b" style={{ borderColor: 'var(--card-border)' }}>
         <div className="flex items-center gap-3">
           <motion.div
             className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
             style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
+            <span className="text-white text-lg font-heading font-bold">N</span>
           </motion.div>
           <AnimatePresence>
             {(!collapsed || isMobile) && (
               <motion.span
-                className="text-lg font-heading font-bold text-slate-900 dark:text-white whitespace-nowrap"
+                className="text-lg font-heading font-bold whitespace-nowrap"
+                style={{ color: 'var(--fg-color)' }}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
                 transition={{ duration: 0.2 }}
               >
-                Study<span className="text-crimson-rose">Nest</span>
+                Study<span className="text-[#D1495B]">Nest</span>
               </motion.span>
             )}
           </AnimatePresence>
         </div>
         {isMobile && (
-          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-slate-900/5 dark:bg-white/5 text-slate-900/50 dark:text-white/50">
+          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--card-bg)]">
             <ChevronLeft size={16} />
           </button>
         )}
->>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
       </div>
 
       {/* Menu sections */}

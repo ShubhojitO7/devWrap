@@ -46,7 +46,7 @@ function AppContent() {
       {!showSplash && (
         <BrowserRouter>
           <Toaster position="top-right" toastOptions={{
-            style: { background: '#102542', color: '#e2e8f0', border: '1px solid var(--text-muted)', fontFamily: 'Inter, sans-serif', fontSize: '13px' },
+            style: { background: 'var(--card-bg)', color: 'var(--fg-color)', border: '1px solid var(--card-border)', fontFamily: 'Inter, sans-serif', fontSize: '13px', backdropFilter: 'blur(20px)' },
           }} />
           <Routes>
             <Route path="/login" element={<Login />} />
