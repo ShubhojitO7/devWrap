@@ -86,13 +86,13 @@ const NotesHub = () => {
           <button className="btn-secondary flex items-center gap-2 justify-center"><Filter size={14}/>Filters</button>
 =======
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-heading font-bold text-white">Notes Hub</h1>
+          <h1 className="text-xl font-heading font-bold text-slate-900 dark:text-white">Notes Hub</h1>
           <button onClick={handleUploadClick} className="btn-primary flex items-center gap-2 text-sm"><Upload size={14}/>Upload Notes</button>
         </div>
         
         <div className="flex gap-3">
           <div className="relative flex-1">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30"/>
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/"/>
             <input 
               className="input-glass pl-9 w-full" 
               placeholder="Search notes by subject, topic..." 
@@ -172,8 +172,8 @@ const NotesHub = () => {
                     <FileText size={18} className="text-blue-400"/>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-sans font-semibold text-white/90">{n.title}</h3>
-                    <p className="text-[10px] font-sans text-white/40 mt-0.5">{n.subject} · {n.branch} · Sem {n.semester}</p>
+                    <h3 className="text-sm font-sans font-semibold text-slate-900/ dark:text-white/">{n.title}</h3>
+                    <p className="text-[10px] font-sans text-slate-900/ dark:text-white/ mt-0.5">{n.subject} · {n.branch} · Sem {n.semester}</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -183,19 +183,19 @@ const NotesHub = () => {
                         <Star 
                           key={j} 
                           size={10} 
-                          className={j < Math.floor(n.averageRating || 0) ? 'text-amber-400' : 'text-white/10'} 
+                          className={j < Math.floor(n.averageRating || 0) ? 'text-amber-400' : 'text-slate-900/ dark:text-white/'} 
                           fill={j < Math.floor(n.averageRating || 0) ? '#fbbf24' : 'transparent'}
                         />
                       ))}
                     </div>
-                    <span className="text-[10px] font-sans text-white/30">{n.averageRating || 0}</span>
+                    <span className="text-[10px] font-sans text-slate-900/ dark:text-white/">{n.averageRating || 0}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] font-sans text-white/30">
+                  <div className="flex items-center gap-1 text-[10px] font-sans text-slate-900/ dark:text-white/">
                     <Download size={10}/>{n.downloads || 0}
                   </div>
                 </div>
-                <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/5">
-                  <span className="text-[10px] font-sans text-white/30">by {n.uploader?.name || 'Unknown'}</span>
+                <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-900/ dark:border-white/">
+                  <span className="text-[10px] font-sans text-slate-900/ dark:text-white/">by {n.uploader?.name || 'Unknown'}</span>
                   <button 
                     onClick={() => handleDownload(n._id)}
                     className="text-[10px] font-sans px-3 py-1 rounded-lg" 

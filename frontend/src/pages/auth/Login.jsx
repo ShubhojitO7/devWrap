@@ -40,17 +40,17 @@ const Login = () => {
       >
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-br from-crimson-rose to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-crimson-rose/20">
-            <Bot size={32} className="text-white" />
+            <Bot size={32} className="text-slate-900 dark:text-white" />
           </div>
-          <h1 className="text-3xl font-heading font-bold text-white">Welcome Back</h1>
-          <p className="text-white/40 font-sans mt-2">Sign in to your StudyNest account</p>
+          <h1 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Welcome Back</h1>
+          <p className="text-slate-900/ dark:text-white/ font-sans mt-2">Sign in to your StudyNest account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-white/60 ml-1">Email Address</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Email Address</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
               <input
                 type="email"
                 value={email}
@@ -63,9 +63,9 @@ const Login = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-sans font-semibold text-white/60 ml-1">Password</label>
+            <label className="text-xs font-sans font-semibold text-slate-900/ dark:text-white/ ml-1">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900/ dark:text-white/" size={18} />
               <input
                 type="password"
                 value={password}
@@ -94,8 +94,8 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-white/5 text-center">
-          <p className="text-sm font-sans text-white/40">
+        <div className="mt-8 pt-6 border-t border-slate-900/ dark:border-white/ text-center">
+          <p className="text-sm font-sans text-slate-900/ dark:text-white/">
             Don't have an account?{' '}
             <Link to="/register" className="text-blue-400 hover:underline font-semibold">Create account</Link>
           </p>

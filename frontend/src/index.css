@@ -56,19 +56,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-<<<<<<< HEAD
     background: var(--bg-gradient);
     color: var(--fg-color);
     min-height: 100vh;
-=======
     line-height: 1.6;
-  }
-
-  /* Dark mode defaults */
-  .dark body {
-    background: radial-gradient(circle at 50% 0%, #102542 0%, #060b14 70%);
-    color: #e2e8f0;
->>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -94,7 +85,6 @@
 @layer components {
   /* Glass Card */
   .glass-card {
-<<<<<<< HEAD
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -106,19 +96,6 @@
   .glass-card:hover {
     border-color: var(--card-hover-border);
     box-shadow: 0 8px 32px var(--accent-glow),
-=======
-    background: rgba(16, 37, 66, 0.4);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .glass-card:hover {
-    border-color: rgba(209, 73, 91, 0.25);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
->>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
                 0 0 0 1px rgba(209, 73, 91, 0.1);
     transform: translateY(-4px);
   }

@@ -75,7 +75,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
           style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
           whileHover={{ scale: 1.05 }}
         >
-          <span className="text-white text-lg font-heading font-bold">N</span>
+          <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
         </motion.div>
         <AnimatePresence>
           {!collapsed && (
@@ -98,19 +98,19 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
       }}
     >
       {/* Logo */}
-      <div className="flex items-center justify-between px-4 py-5 border-b border-white/5">
+      <div className="flex items-center justify-between px-4 py-5 border-b border-slate-900/ dark:border-white/">
         <div className="flex items-center gap-3">
           <motion.div
             className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
             style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)' }}
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-white text-lg font-heading font-bold">N</span>
+            <span className="text-slate-900 dark:text-white text-lg font-heading font-bold">N</span>
           </motion.div>
           <AnimatePresence>
             {(!collapsed || isMobile) && (
               <motion.span
-                className="text-lg font-heading font-bold text-white whitespace-nowrap"
+                className="text-lg font-heading font-bold text-slate-900 dark:text-white whitespace-nowrap"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
@@ -122,7 +122,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
           </AnimatePresence>
         </div>
         {isMobile && (
-          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-white/5 text-white/40">
+          <button onClick={closeMobile} className="w-8 h-8 rounded-xl flex items-center justify-center bg-slate-900/ dark:bg-white/ text-slate-900/ dark:text-white/">
             <ChevronLeft size={16} />
           </button>
         )}
@@ -260,7 +260,7 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile, closeMobile }) => {
             borderColor: 'rgba(255,255,255,0.15)',
           }}
         >
-          {collapsed ? <ChevronRight size={12} className="text-white/60" /> : <ChevronLeft size={12} className="text-white/60" />}
+          {collapsed ? <ChevronRight size={12} className="text-slate-900/ dark:text-white/" /> : <ChevronLeft size={12} className="text-slate-900/ dark:text-white/" />}
         </button>
       )}
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd

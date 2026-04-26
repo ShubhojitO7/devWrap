@@ -33,13 +33,13 @@ const TopNav = ({ toggleMobileSidebar }) => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileOpen(true)}
-          className="p-2 -ml-2 rounded-xl lg:hidden transition-colors hover:bg-white/5"
+          className="p-2 -ml-2 rounded-xl lg:hidden transition-colors hover:bg-slate-900/ dark:bg-white/"
           style={{ color: 'var(--fg-color)' }}
 =======
       <div className="flex items-center gap-4">
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-white/60"
+          className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center bg-slate-900/ dark:bg-white/ border border-slate-900/ dark:border-white/ text-slate-900/ dark:text-white/"
           onClick={toggleMobileSidebar}
 >>>>>>> c1e72641f002f69d4f370240bfd233508ed374bd
         >
@@ -56,8 +56,8 @@ const TopNav = ({ toggleMobileSidebar }) => {
               className={({ isActive }) =>
                 `px-4 py-2 rounded-xl text-sm font-sans font-medium transition-all duration-300 ${
                   isActive
-                    ? 'text-white'
-                    : 'text-[var(--text-muted)] hover:text-[var(--fg-color)] hover:bg-white/5'
+                    ? 'text-slate-900 dark:text-white'
+                    : 'text-[var(--text-muted)] hover:text-[var(--fg-color)] hover:bg-slate-900/ dark:bg-white/'
                 }`
               }
               style={({ isActive }) =>
@@ -98,11 +98,11 @@ const TopNav = ({ toggleMobileSidebar }) => {
 
         {/* Notifications */}
         <button
-          className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center transition-all hover:bg-white/5"
+          className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center transition-all hover:bg-slate-900/ dark:bg-white/"
           style={{ border: '1px solid var(--card-border)', color: 'var(--text-muted)' }}
         >
           <Bell size={18} />
-          <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#D1495B] text-[8px] text-white font-sans font-bold flex items-center justify-center">
+          <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#D1495B] text-[8px] text-slate-900 dark:text-white font-sans font-bold flex items-center justify-center">
             3
           </span>
         </button>

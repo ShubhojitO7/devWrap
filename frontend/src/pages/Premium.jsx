@@ -12,7 +12,7 @@ const plans = [
     n: 'BASIC',
     p: '$15',
     c: '99',
-    icon: <Send size={40} className="text-white" />,
+    icon: <Send size={40} className="text-slate-900 dark:text-white" />,
     color: '#00a896',
     features: ['FREE SUPPORT 24/7', 'DATABASES DOWNLOAD'],
     style: { bg: '#00a896', secondary: '#028090' }
@@ -22,7 +22,7 @@ const plans = [
     n: 'STANDARD',
     p: '$25',
     c: '99',
-    icon: <Plane size={48} className="text-white" />,
+    icon: <Plane size={48} className="text-slate-900 dark:text-white" />,
     color: '#f39c12',
     features: ['FREE SUPPORT 24/7', 'DATABASES DOWNLOAD', 'MAINTENANCE EMAIL'],
     style: { bg: '#f39c12', secondary: '#e67e22' }
@@ -32,7 +32,7 @@ const plans = [
     n: 'PREMIUM',
     p: '$35',
     c: '99',
-    icon: <Rocket size={40} className="text-white" />,
+    icon: <Rocket size={40} className="text-slate-900 dark:text-white" />,
     color: '#8e44ad',
     features: ['FREE SUPPORT 24/7', 'DATABASES DOWNLOAD', 'MAINTENANCE EMAIL', 'UNLIMITED TRAFFIC'],
     style: { bg: '#8e44ad', secondary: '#71368b' }
@@ -52,12 +52,12 @@ const Premium = () => (
           <motion.div key={i} className="glass-card p-6 relative" style={{background:p.style.bg,border:`1px solid ${p.style.border}`}} initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{delay:i*0.1}} whileHover={{y:-5}}>
             {p.pop && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-sans font-bold" style={{background:'linear-gradient(135deg,#a78bfa,#D1495B)',color:'white'}}>Most Popular</div>}
             <h3 className="text-lg font-heading font-bold text-[var(--fg-color)]">{p.n}</h3>
-            <div className="mt-2 mb-1"><span className="text-3xl font-heading font-bold text-white">{p.p}</span><span className="text-sm font-sans text-[var(--text-muted)]"> / {p.per}</span></div>
+            <div className="mt-2 mb-1"><span className="text-3xl font-heading font-bold text-slate-900 dark:text-white">{p.p}</span><span className="text-sm font-sans text-[var(--text-muted)]"> / {p.per}</span></div>
             {p.sub && <p className="text-[11px] font-sans text-emerald-400 mb-3">{p.sub}</p>}
             <div className="space-y-2.5 my-5">
               {p.features.map((f,j)=>(
                 <div key={j} className="flex items-center gap-2">
-                  {f.v ? <Check size={14} className="text-emerald-400"/> : <X size={14} className="text-white/20"/>}
+                  {f.v ? <Check size={14} className="text-emerald-400"/> : <X size={14} className="text-slate-900/ dark:text-white/"/>}
                   <span className={`text-xs font-sans ${f.v?'text-[var(--fg-color)] opacity-70':'text-[var(--text-muted)] opacity-80'}`}>{f.t}</span>
 =======
 const Premium = () => {
@@ -88,7 +88,7 @@ const Premium = () => {
     <AnimatedPage>
       <div className="min-h-screen py-12 px-4">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-heading font-bold text-white mb-4">Choose Your Plan</h1>
+          <h1 className="text-4xl font-heading font-bold text-slate-900 dark:text-white mb-4">Choose Your Plan</h1>
           <div className="w-24 h-1 bg-crimson-rose mx-auto rounded-full"></div>
         </div>
 
@@ -108,7 +108,7 @@ const Premium = () => {
                 style={{ background: p.style.bg }}
               >
                 <div className="mb-4 relative z-10">{p.icon}</div>
-                <h2 className="text-2xl font-heading font-bold text-white tracking-widest relative z-10">{p.n}</h2>
+                <h2 className="text-2xl font-heading font-bold text-slate-900 dark:text-white tracking-widest relative z-10">{p.n}</h2>
                 
                 {/* Wave effect */}
                 <div className="absolute bottom-0 left-0 w-full h-16 bg-white" style={{ borderRadius: '50% 50% 0 0 / 100% 100% 0 0', transform: 'scaleX(1.5)' }}></div>
@@ -142,7 +142,7 @@ const Premium = () => {
                 <button
                   onClick={() => handlePurchase(p.id)}
                   disabled={loading === p.id || user?.plan === p.id}
-                  className="w-full py-4 rounded-2xl text-white font-bold tracking-widest text-lg shadow-xl transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100"
+                  className="w-full py-4 rounded-2xl text-slate-900 dark:text-white font-bold tracking-widest text-lg shadow-xl transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100"
                   style={{ background: '#333' }}
                 >
                   {loading === p.id ? <Loader2 className="animate-spin mx-auto" size={24} /> : (user?.plan === p.id ? 'ACTIVE' : 'BUY')}

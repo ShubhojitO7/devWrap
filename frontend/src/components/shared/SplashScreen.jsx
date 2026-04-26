@@ -45,7 +45,7 @@ const SplashScreen = ({ onComplete }) => {
             className="w-20 h-20 rounded-2xl flex items-center justify-center"
             style={{ background: 'linear-gradient(135deg, #D1495B, #b83a4a)', boxShadow: '0 0 40px rgba(209,73,91,0.4)' }}
           >
-            <span className="text-white text-3xl font-heading font-bold">N</span>
+            <span className="text-slate-900 dark:text-white text-3xl font-heading font-bold">N</span>
           </motion.div>
 
           {/* Brand name */}
